@@ -1,4 +1,3 @@
-
 Creación de Tablas
 
 CREATE DATABASE `grupo3bd` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -7,8 +6,8 @@ USE `grupo3bd`;
 
 create table  `grupo3bd`.`usuario`(
 id_usuario varchar(9) not null primary key,
-usuario varchar(50) not null unique,
-contraseña varchar(15)not null,
+nombre varchar(50) not null unique,
+password varchar(15)not null,
 email varchar(60)not null unique,
 tipo varchar(50)not null,
 unique (id_usuario ,email )
@@ -35,8 +34,12 @@ unique (id_entrada)
 )ENGINE = INNODB;
 
 
-CREATE USER 'grupo3'@'localhost' IDENTIFIED BY '2dw3123';
+
+CREATE USER 'grupo3' @'localhost' IDENTIFIED BY '2dw3123';
 GRANT ALL PRIVILEGES ON grupo3bd.* TO 'grupo3'@'localhost';
 
 
 
+INSERTAR USUARIOS
+
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `password`, `email`, `tipo`) VALUES ('F0010389', 'Elevyn', 'Elevyn2019', 'kevinelevin23@gmail.com', 'Admin');
