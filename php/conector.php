@@ -11,7 +11,7 @@
 <?php
 $contraseña = "2dw3123";
 $usuario = "grupo3";
-$nombre_base_de_datos = "grupo3";
+$nombre_base_de_datos = "grupo3bd";
 try{
     $base_de_datos = new PDO('mysql:host=localhost;dbname=' . $nombre_base_de_datos, $usuario, $contraseña);
     echo "conexión efectuada";
