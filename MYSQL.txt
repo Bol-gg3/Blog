@@ -1,10 +1,11 @@
+
 Creación de Tablas
 
-CREATE DATABASE `grupo3` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `grupo3`;
+CREATE DATABASE `grupo3bd` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `grupo3bd`;
 
 
-create table  `grupo3`.`usuario`(
+create table  `grupo3bd`.`usuario`(
 id_usuario varchar(9) not null primary key,
 usuario varchar(50) not null unique,
 contraseña varchar(15)not null,
@@ -14,7 +15,7 @@ unique (id_usuario ,email )
 )ENGINE = INNODB;
 
 
-CREATE table `grupo3`.`comentario`(
+CREATE table `grupo3bd`.`comentario`(
 id_comentario varchar(9) not null primary key,
 fecha_comentario date not null,
 comentarios varchar(200)not null,
@@ -24,7 +25,7 @@ unique (id_comentario)
 )ENGINE = INNODB;
 
 
-CREATE table `grupo3`.`entrada`(
+CREATE table `grupo3bd`.`entrada`(
 id_entrada varchar(9) not null primary key,
 fecha_entrada date not null,
 entradas varchar(200)not null,
@@ -35,4 +36,7 @@ unique (id_entrada)
 
 
 CREATE USER 'grupo3' @'localhost' IDENTIFIED BY '2dw3123';
-GRANT ALL PRIVILEGES ON `grupo3`.* TO 'grupo3' @'localhost';
+GRANT ALL PRIVILEGES ON grupo3bd.* TO 'grupo3'@'localhost';
+
+
+
