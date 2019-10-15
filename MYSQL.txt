@@ -35,7 +35,7 @@ unique (id_entrada)
 )ENGINE = INNODB;
 
 
-CREATE USER 'grupo3' @'localhost' IDENTIFIED BY '2dw3123';
+CREATE USER 'grupo3'@'localhost' IDENTIFIED BY '2dw3123';
 GRANT ALL PRIVILEGES ON grupo3bd.* TO 'grupo3'@'localhost';
 
 
