@@ -15,6 +15,9 @@ session_start();
         function popupUploadForm(){
         var newWindow = window.open('../html/certificado.html', 'name', 'height=500,width=600');
     }
+    fuction login(){
+        var newWindow = window.open('../html/login.html', 'name', 'height=500,width=600');
+    }
     </script>
 </head>
 <body>
