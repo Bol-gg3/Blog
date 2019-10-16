@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +12,18 @@
         /*window.onload=function(){
             document.write("funciona");
         }*/
+        function popupUploadForm(){
+        var newWindow = window.open('../html/certificado.html', 'name', 'height=500,width=600');
+    }
     </script>
 </head>
 <body>
     <header>
-        <form action="" method="get">
-            <input type="button" value="Registro" name="registro" onclick="window.onload">
-            <input type="button" value="Login" name="login" id="login">
+        <form action="" method="POST">
+        <label>Entra en Login si te has registrado sino registrate en Registro:
+            <input type="submit" value="Registro" name="registro" onclick="popupUploadForm()">
+            <input type="submit" value="Login" name="login" id="login">
+            </label>
         </form>
     </header>
     <section>

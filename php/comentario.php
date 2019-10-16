@@ -7,9 +7,16 @@
     <title>Comentario</title>
 </head>
 <body>
+
+<!--id_comentario 
+fecha_comentario 
+comentarios
+id_usuario -->
     <?php
+    
     if(isset($_POST["enviar"])){
         echo $_POST['comentario'];
+        echo $_POST
     }
     ?>
 </body>
