@@ -11,7 +11,7 @@ session_start();
     <script>
      
         function popupUploadForm(){
-        var newWindow = window.open('../html/certificado.html', 'name', 'height=500,width=600');
+        var newWindow = window.open('Registro.php', 'name', 'height=500,width=600');
     }
     function login1(){
         var newWindow = window.open('../html/login.html', 'name', 'height=500,width=600');
@@ -19,6 +19,7 @@ session_start();
     </script>
 </head>
 <body>
+  
     <header>
         <form action="" method="POST">
         <label>Entra en Login si te has registrado sino registrate en Registro:
