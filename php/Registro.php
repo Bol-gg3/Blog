@@ -1,8 +1,4 @@
-<?php
-include_once "conector.php";
-$sentencia = $base_de_datos->query("SELECT * FROM usuario;");
-$usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
-?>
+
 <!--Recordemos que podemos intercambiar HTML y PHP como queramos-->
 <!DOCTYPE html>
 <html lang="es">
@@ -10,43 +6,11 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 <head>
 	<meta charset="UTF-8">
 	<title>Tabla Usuarios</title>
-	<style>
-		table,
-		th,
-		td {
-			border: 1px solid black;
-		}
-	</style>
+	
 </head>
 
 <body>
-	<br>
-	<table>
-		<thead>
-			<tr>
-				<th>ID Usuario</th>
-				<th>Nombre</th>
-				<th>Contraseña</th>
-				<th>Email</th>
-				<th>Tipo</th>
-			</tr>
-		</thead>
-		<tbody>
-			<!--
-				Atención aquí, sólo esto cambiará
-				Pd: no ignores las llaves de inicio y cierre {}
-			-->
-			<?php foreach($usuario as $usuario){ ?>
-			<tr>
-				<td><?php echo $usuario->id_usuario?></td>
-				<td><?php echo $usuario->nombre?></td>
-				<td><?php echo $usuario->passwrd?></td>
-				<td><?php echo $usuario->email?></td>
-				<td><?php echo $usuario->tipo?></td>
-			</tr>
-			<?php } ?>
-		</tbody>
-	</table>
+	
 	<br>
 	<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
 

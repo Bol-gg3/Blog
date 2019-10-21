@@ -8,9 +8,15 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
+    <script type="text/javascript">
+function closeSelf(){
+    self.close();
+    return true;
+}
+</script>
 </head>
 <body>
-    <form action="reto.php"  method="POST">
+    <form action  method="POST">
         <table>
             <tr>
 <td><label>Email</label></td>
@@ -21,7 +27,7 @@ session_start();
 <td><input type="password" name="contraseña" id="contraseña"></td>
            </tr>
            <tr>
-               <td><input type="submit" name="enviar" id="enviar" value="enviar"></td>
+               <td><input type="submit" name="enviar" id="enviar" value="enviar" onClick="closeSelf()"></td>
            </tr>
         </table>
     </form>
