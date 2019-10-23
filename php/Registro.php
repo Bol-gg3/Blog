@@ -2,7 +2,12 @@
 <!--Recordemos que podemos intercambiar HTML y PHP como queramos-->
 <!DOCTYPE html>
 <html lang="es">
-
+<script type="text/javascript">
+        function closeSelf() {
+            self.close();
+            return true;
+        }
+    </script>
 <head>
 	<meta charset="UTF-8">
 	<title>Tabla Usuarios</title>
@@ -13,8 +18,6 @@
 	
 	<br>
 	<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
-
-
 
 		<label for="id_usuario">ID Usuario:</label>
 		<br>
@@ -33,18 +36,15 @@
 		<br>
 		<input name="email" type="email" id="email" placeholder="Escribe el correo electonico..." required>
 		<br><br>
-		<label for="tipo">Tipo de usuario:</label>
-		<br>
-		<select name="tipo" type="text">
-			<option value="usuarios" selected>Usuarios</option>
-			<option value="usuarios_verificado">Usuarios Verificado</option>
-			<option value="administrador">Administrador</option>
-		</select>
+		<input name="email" type="email" id="email" placeholder="Repite el correo electro..." required>
 		<br><br>
+		<label for="tipo">Tipo de usuario: Usuario</label>
 		<br><br>
-		<input type="submit" name="insertar" value="Registrar">
+		<input type="submit" name="insertar" value="Registrar"  onClick="closeSelf()">
+		<input type="submit" name="cancelar" value="Cancelar"  onClick="closeSelf()">
 	</form>
 	<?php
+		
         #Salir si alguno de los datos no está presente
 		if(isset($_POST['submit']));
 		if(!isset($_POST["id_usuario"]) ||!isset($_POST["nombre"])|| 
@@ -55,11 +55,11 @@
         $nombre = $_POST["nombre"];
         $passwrd = $_POST["passwrd"];
         $email = $_POST["email"];
-        $tipo = $_POST["tipo"];
+        $tipo = "usuarios";
      
         $sentencia = $base_de_datos->prepare("INSERT INTO usuario(id_usuario, nombre, passwrd, email, tipo) VALUES (?,?,?,?,?);");
         $resultado = $sentencia->execute([$id_usuario, $nombre, $passwrd, $email, $tipo]);
-        if($resultado === TRUE) echo "Insertado correctamente";
+        if($resultado === TRUE) header("Location: reto.php");
 		else echo "Algo salió mal. Por favor verifica que el id del usuario y el correo electronico no existan.";
 		//else echo "Algo salió mal al pulsar. Por favor verifica que el id del usuario y el correo electronico no existan.";
     ?>
