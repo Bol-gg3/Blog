@@ -53,8 +53,8 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
 
 		<label for="id_usuario">ID Usuario:</label>
-		<input name="id_usuario" required type="text" id="id_usuario" placeholder="Escribe el id del usuario..."
-			required><br><br>
+		<input name="id_usuario"  type="text" id="id_usuario" placeholder="Escribe el id del usuario..."
+			><br><br>
 		<label for="nombre">Nombre del usuario:</label>
 		<input name="nombre" type="text" id="nombre" placeholder="Escribe el nombre...">
 		<br><br>
@@ -76,25 +76,26 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 		<input type="submit" id="eliminar" name="eliminar" value="Eliminar">
 		<input type="submit" id="modificar" name="modificar" value="Modificar">
 		<input type="reset" name="limpiar" value="Limpiar">
-		<br>
+		<br/><br/>
 	</form>
 	<?php
 		#INSERTAR DATOS A LA TABLA EN MYSQL
 		 #Salir si alguno de los datos no está presente
-		if(isset($_POST["insertar"]));
-		if(!isset($_POST["id_usuario"]) ||!isset($_POST["nombre"])||
+		if(isset($_POST["insertar"])){
+		if(!isset($_POST["nombre"])||
 		!isset($_POST["passwrd"])|| !isset($_POST["email"])|| !isset($_POST["tipo"]))  exit();
         #Si todo va bien, se ejecuta esta parte del código...
         include_once "conector.php";
-        $id_usuario = $_POST["id_usuario"];
-        $nombre = $_POST["nombre"];
+		$nombre = $_POST["nombre"];
         $passwrd = $_POST["passwrd"];
         $email = $_POST["email"];
         $tipo = $_POST["tipo"];
 
-        $sentencia = $base_de_datos->prepare("INSERT INTO usuario(id_usuario, nombre, passwrd, email, tipo) VALUES (?,?,?,?,?);");
-        $resultado = $sentencia->execute([$id_usuario, $nombre, $passwrd, $email, $tipo]);
+        $sentencia = $base_de_datos->prepare("INSERT INTO usuario VALUES (NULL,?,?,?,?);");
+        $resultado = $sentencia->execute([$nombre, $passwrd, $email, $tipo]);
 		if($resultado === TRUE) header("Location: GestionUsuariosAdmin.php");
+		else echo "Algo salió mal al insertar";
+		}
 
 		#ELEMINAR DATOS A LA TABLA EN MYSQL
 		elseif(isset($_POST["eliminar"])){
@@ -127,12 +128,16 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 			$passwrd = $_POST["passwrd"];
 			$email = $_POST["email"];
 			$tipo = $_POST["tipo"];
-			$sentencia = $base_de_datos->prepare("UPDATE usuario SET nombre = ?, passwrd = ?, email = ?, tipo = ? WHERE id_usuario = ?;");
-			$resultado = $sentencia->execute([$nombre, $passwrd, $email, $tipo, $id_usuario]); # Pasar en el mismo orden de los ?
+			$miconsulta = "UPDATE usuario SET id_usuario = ?,nombre = ?, passwrd = ?, email = ?, tipo = ? WHERE id_usuario = ?;";
+			echo $miconsulta;
+			$sentencia = $base_de_datos->prepare("UPDATE usuario SET nombre = ?, email = ?, tipo = ? WHERE id_usuario = ?;");
+			$resultado = $sentencia->execute([$nombre,$email,$tipo, $id_usuario]); # Pasar en el mismo orden de los ?
 			if ($resultado === true)  header("Location: GestionUsuariosAdmin.php");
-			else echo "Algo salió mal al eliminar";
+			else echo "Algo salió mal al Modificar";
 		}
-		else echo "Algo salió mal. Por favor verifica que el id del usuario y el correo electronico no existan.";
+		else{ echo "Registrar usuario.";
+			
+		}
 		//else echo "Algo salió mal al pulsar. Por favor verifica que el id del usuario y el correo electronico no existan.";
     ?>
 </body>
