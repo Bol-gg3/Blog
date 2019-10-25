@@ -80,39 +80,53 @@
         document.getElementById("btn0").onmouseover = accion;
         document.getElementById("btn0").onmouseout = accion;
 
-        function accion () {
-        var pepe = this.id;
+        function accion (elEvento) {
+
+        
+        var identificador = this.id;
         console.log (pepe)
         
         
-        switch (pepe) {
+        switch (identificador) {
             case "btn1":
-            console.log(1)
+            document.getElementById("pantalla").innerHTML += 1;
             break;
-
+            
             case "btn2":
-            console.log(2)
+            document.getElementById("pantalla").innerHTML += 2;
             break;
 
             case "btn3":
-            console.log(3)
+            document.getElementById("pantalla").innerHTML += 3;
             break;
 
             case "btn4":
-            console.log(4)
+            document.getElementById("pantalla").innerHTML += 4;
             break;
 
             switch (pepe) {
             case "btn5":
-            console.log(5)
+            document.getElementById("pantalla").innerHTML += 5;
             break;
 
             case "btn6":
-            console.log(6)
+            document.getElementById("pantalla").innerHTML += 6;
             break;
 
             case "btn7":
-            console.log(7)
+            document.getElementById("pantalla").innerHTML += 7;
+            break;
+
+            case "btn8":
+            document.getElementById("pantalla").innerHTML += 8;
+            break;
+
+            case "btn9":
+            document.getElementById("pantalla").innerHTML += 9;
+            break;
+
+            case "btn0":
+            document.getElementById("pantalla").innerHTML += 0;
             break;
         
         }
