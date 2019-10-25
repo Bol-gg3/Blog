@@ -3,16 +3,16 @@
 
   require 'conector.php';
 
-  if (isset($_SESSION['user_id'])) {
-    $records = $conn->prepare('SELECT id, email, password FROM users WHERE id = :id');
-    $records->bindParam(':id', $_SESSION['user_id']);
-    $records->execute();
-    $results = $records->fetch(PDO::FETCH_ASSOC);
+  if (isset($_SESSION['email'])) {
+    $sentencia = $base_de_datos->prepare('SELECT nombre, email  password FROM usuario WHERE email = :email');
+    $sentencia->bindParam(':email', $_SESSION['email']);
+    $sentencia->execute();
+    $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
 
-    $user = null;
+    $email = null;
 
-    if (count($results) > 0) {
-      $user = $results;
+    if (count($resultado) > 0) {
+      $email = $resultado;
     }
   }
 ?>
@@ -27,21 +27,21 @@
     <title>G3</title>
     <script>
         function popupUploadForm() {
-            var newWindow = window.open('Registro.php', 'name', 'height=400,width=600');
+            var newWindow = window.open('registrate.php', 'name', 'height=400,width=600');
         }
 
         function login1() {
-            var newWindow = window.open('login.php', 'name', 'height=330,width=420');
+            var newWindow = window.open('login.php', 'name', 'height=300,width=400');
         }
     </script>
 </head>
 
 <body>
-    <?php require 'header.php' ?>
-    <?php if(!empty($user)): ?>
-      <br> Bienvenido. <?= $user['email']; ?>
+    
+    <?php if(!empty($email)): ?>
+      <br> Bienvenido. <?= $email['nombre']; ?>
       <br>Estas logeado
-      <a href="logout.php">
+      <a href="cerrar.php">
         Cerrar Seccion
       </a>
     <?php else: ?>
@@ -50,7 +50,6 @@
 
             <img src="../Recursos/logo.png" alt="" id="logo">
             <form action="" method="POST">
-
                 <label>Entra en Login si te has registrado sino registrate en Registro:
                     <input type="submit" value="Registro" name="registro" onclick="popupUploadForm()">
                     <input type="submit" value="Login" name="login" id="login" onclick="login1()">

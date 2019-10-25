@@ -50,8 +50,6 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 	<br>
 	<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
-
-
 		<label for="id_usuario">ID Usuario:</label>
 		<input name="id_usuario"  type="text" id="id_usuario" placeholder="Escribe el id del usuario..."
 			><br><br>
