@@ -49,7 +49,7 @@
 
 <div id ="cont">
 
-    <header>
+    <header id ="h">
         <img src="../Recursos/logo.png" alt="" id="logo">
 
         <?php if(!empty($email)): ?>
@@ -127,7 +127,7 @@
 
         <section id="btnaburro">
 
-        <button id ="btnnoche"><img src="../Recursos/luna.png" id="btnnoche"></button>
+        <button id ="btnmodo"><img src="../Recursos/luna.png" id ="btnnoche"></button>
 
         <div id="digitos">
 
@@ -198,7 +198,7 @@ document.images["s2"].src = array_chulo[segundo_derecho] ;
 
 <script>
 /*Modo noche*/
-document.getElementById("btnnoche").onclick = cambia;
+document.getElementById("btnmodo").onclick = cambia;
 var modo = "noche"
 
 function cambia() {
