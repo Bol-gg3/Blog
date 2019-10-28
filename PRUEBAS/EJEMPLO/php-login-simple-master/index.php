@@ -4,15 +4,15 @@
   require 'database.php';
 
   if (isset($_SESSION['user_id'])) {
-    $sentencia = $base_de_datos->prepare('SELECT id, email, password FROM users WHERE id = :id');
-    $sentencia->bindParam(':id', $_SESSION['user_id']);
-    $sentencia->execute();
-    $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
+    $records = $conn->prepare('SELECT id, email, password FROM users WHERE id = :id');
+    $records->bindParam(':id', $_SESSION['user_id']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
 
     $user = null;
 
-    if (count($resultado) > 0) {
-      $user = $resultado;
+    if (count($results) > 0) {
+      $user = $results;
     }
   }
 ?>

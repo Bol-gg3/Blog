@@ -27,7 +27,7 @@
 				<br><br>
 				<input type="submit" id="cancelar" name="cancelar" value="Cancelar" onClick="closeSelf()">
 				<input type="reset" name="limpiar" value="Limpiar">
-				<button type="button" onclick="login.submit() or ">Iniciar Sesion</button>
+				<button type="button" onclick="login.submit()">Iniciar Sesion</button>
 			</div>
 
 			<!--Mensaje de error -->

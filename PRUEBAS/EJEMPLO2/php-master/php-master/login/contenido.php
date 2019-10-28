@@ -1,7 +1,7 @@
 <?php session_start();
 if (isset($_SESSION['email'])) {
-	header('Location: reto.php');
+	require 'views/contenido.view.php';
 } else {
-	header('Location: registrate.php');
+	header('Location: login.php');
 }
 ?>

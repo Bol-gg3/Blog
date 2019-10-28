@@ -1,6 +1,6 @@
 <?php session_start();
 if (isset($_SESSION['email'])) {
-	header('Location: reto.php');
+	header('Location: contenido.php');
 } else {
 	header('Location: registrate.php');
 }

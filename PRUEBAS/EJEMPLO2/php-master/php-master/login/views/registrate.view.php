@@ -5,9 +5,7 @@
 	<title>Registrate</title>
 </head>
 <body>
-	<div><p>
-			<a href="reto.php">Iniciar Secion como Invitado sin registrarse</a>
-		</p>
+	<div>
 		<h1 class="titulo">Registrate</h1>
 
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="formulario" name="login">
@@ -25,7 +23,6 @@
 				<input type="password" name="password2" class="password_btn" placeholder="Confirmar Contraseña"><br><br>
 				<button type="button" onclick="login.submit()">Registrate</button>
 			</div>
-			
 
 
 <!--Mensaje de error -->

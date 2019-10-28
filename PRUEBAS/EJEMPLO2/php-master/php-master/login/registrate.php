@@ -8,7 +8,7 @@ if (isset($_SESSION['email'])) {
 	header('Location: index.php');
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$nombre = filter_var($_POST['nombre']);
+	$nombre = filter_var(strtolower($_POST['nombre']), FILTER_SANITIZE_STRING);
 	$email = filter_var(strtolower($_POST['email']), FILTER_SANITIZE_STRING);
 	$password = $_POST['password'];
 	$password2 = $_POST['password2'];
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$resultado = $sentencia->fetch();
 
 		if ($resultado != false) {
-			$errores .= '<li>Ya existe un usuario con ese email</li>';
+			$errores .= '<li>El nombre de usuario ya existe</li>';
 		}
 		
 		if ($password != $password2) {

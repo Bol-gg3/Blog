@@ -5,18 +5,14 @@
 	<title>Registrate</title>
 </head>
 <body>
-	<div><p>
-			<a href="reto.php">Iniciar Secion como Invitado sin registrarse</a>
-		</p>
+	<div>
 		<h1 class="titulo">Registrate</h1>
 
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="formulario" name="login">
 			<div class="form-group">
-				<input type="text" name="nombre" class="nombre" placeholder="Nombre usuario">
+				<input type="text" name="usuario" class="usuario" placeholder="Usuario">
 			</div>
-			<div class="form-group">
-				<input type="text" name="email" class="email" placeholder="Email del suario">
-			</div>
+
 			<div>
 				<input type="password" name="password" class="password" placeholder="Contraseña">
 			</div>
@@ -25,7 +21,6 @@
 				<input type="password" name="password2" class="password_btn" placeholder="Confirmar Contraseña"><br><br>
 				<button type="button" onclick="login.submit()">Registrate</button>
 			</div>
-			
 
 
 <!--Mensaje de error -->
