@@ -44,23 +44,28 @@
 </head>
 
 <body>
-<header>
-<img src="../Recursos/logo.png" alt="" id="logo">
-</header>
-    <?php if(!empty($email)): ?>
+
+    
+
+<div id ="cont">
+
+    <header>
+        <img src="../Recursos/logo.png" alt="" id="logo">
+
+        <?php if(!empty($email)): ?>
     <div>
       <br> Bienvenido <?= $email['nombre']; ?><br>
       <br><input type="button" value="Cerrar Session" name="cerrarse" id="cerrarse" onclick="cerrar()">
       
       <input type="button" value="Configurar cuenta" name="config" id="config" onclick="configC()">
       <br><br>
-      </div>
+    </div>
     <?php else: ?>
     
     
            
 
-            
+             
             <form action="" method="POST">
                 <label>Entra en Login si te has registrado sino registrate en Registro:
                     <input type="submit" value="Registro" name="registro" onclick="popupUploadForm()">
@@ -69,8 +74,7 @@
             </form>
     
         <?php endif; ?>
-
-
+    </header>
         <section id="ContEnt">
 
             <article class="entrada">

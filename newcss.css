@@ -1,6 +1,7 @@
 #cont{ 
         background-color: #404040;
         display: grid;
+        gap: 10px;
         grid-template-rows: 100px 300px 300px 100px;
         grid-template-columns: 100px auto  auto 100px;
         grid-template-areas: "h h h h"
@@ -8,8 +9,8 @@
                              ". com com ."
                              "ab ab ab ab" ;}
 
-#ContEnt{grid-area: ent; background-color: grey;  overflow: scroll; color :white;}
-#ContCom{grid-area: com; background-color: grey;  overflow: scroll; color :white;}
+#ContEnt{grid-area: ent; background-color: grey;  overflow: scroll; color :white; height: 50vh;}
+#ContCom{grid-area: com; background-color: grey;  overflow: scroll; color :white; height: 50vh;}
 #btnaburro{display : flex;grid-area: ab;background-color: #0D0D0D; color :white; text-align: center; padding-top: 20px;}
 header{grid-area: h;background-color: #0D0D0D; color :white; display: flex;}
 .entrada {background-color: #BFBFBF; width: 800px; height: 200px; color: black; margin: 10px; border: black 1px solid; padding: 10px;}
