@@ -67,7 +67,7 @@
 
              
             <form action="" method="POST">
-                <label>Entra en Login si te has registrado sino registrate en Registro:
+                <label>Accede a la pagina:
                     <input type="submit" value="Registro" name="registro" onclick="popupUploadForm()">
                     <input type="submit" value="Login" name="login" id="login" onclick="login1()">
                 </label>
@@ -85,29 +85,14 @@
                     velit quisquam saepe ea odit!</h3>
             </article>
 
-            <article class="entrada">
-                <h2>Esta es una entrada de prueba :</h2>
-
-                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, deserunt deleniti! Natus
-                    asperiores praesentium commodi temporibus officiis sint, cum vero esse hic? Ullam a consectetur
-                    velit quisquam saepe ea odit!</h3>
-            </article>
             <form action="Entrada.php">
-                <textarea name="entrada" id="entrada" cols="100" rows="10"></textarea>
+                <textarea name="entrada" id="entrada" cols="100" rows="10"></textarea><br>
                 <input type="submit" name="insertar" value="insertar">
             </form>
         </section>
 
 
         <section id="ContCom">
-
-            <article class="comentario">
-                <h2>Esta es una entrada de prueba :</h2>
-
-                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, deserunt deleniti! Natus
-                    asperiores praesentium commodi temporibus officiis sint, cum vero esse hic? Ullam a consectetur
-                    velit quisquam saepe ea odit!</h3>
-            </article>
 
             <article class="comentario">
                 <h2>Esta es una entrada de prueba :</h2>
@@ -127,7 +112,7 @@
 
         <section id="btnaburro">
 
-        <button id ="btnmodo"><img src="../Recursos/luna.png" id ="btnnoche"></button>
+        <button id ="btnmodo"><img src="../Recursos/lunita.png" id ="btnnoche"></button>
 
         <div id="digitos">
 
@@ -205,38 +190,38 @@ function cambia() {
 
   console.log("1")
 
-  var modo = "dia"
+if (modo === "noche"){
+                    
+                    document.getElementById("logo").src = '../Recursos/logolight.jpg';
+                    document.getElementById("btnnoche").src = '../Recursos/sol.png';
+                    document.getElementById("cont").style.backgroundColor = 'lightgray';
+                    
+                    document.getElementById("ContEnt").style.borderColor = 'black';
+                    document.getElementById("ContEnt").style.fontcolor = 'black';
+                    document.getElementById("ContEnt").style.backgroundColor = 'white';
+                    document.getElementById("ContEnt").style.borderColor = 'black';
+                    document.getElementById("ContEnt").style.fontcolor = 'black';
 
-    if (modo ==="noche"){
-        document.getElementById("logo").src = '../Recursos/logolight.jpg'
+                    document.getElementById("h").style.backgroundColor = 'grey';
+                    document.getElementById("h").style.borderColor = 'black';
+                    document.getElementById("h").style.fontcolor = 'black';
+                    
+                    document.getElementById("btnaburro").style.backgroundColor = 'grey';
+                    document.getElementById("btnaburro").style.borderColor = 'black';
+                    document.getElementById("btnaburro").style.fontcolor = 'black';
+                    
+                    document.getElementById("ContCom").style.backgroundColor = 'white';
+                    document.getElementById("ContCom").style.borderColor = 'black';
+                    document.getElementById("ContCom").style.fontcolor = 'black';
 
-                    document.getElementById("cont").style.backgroundColor = 'lightgray'
-                    document.getElementById("ContEnt").style.borderColor = 'black'
-                    document.getElementById("ContEnt").style.fontcolor = 'black'
-
-                    document.getElementById("ContEnt").style.backgroundColor = 'white'
-                    document.getElementById("ContEnt").style.borderColor = 'black'
-                    document.getElementById("ContEnt").style.fontcolor = 'black'
-
-                    document.getElementById("h").style.backgroundColor = 'grey'
-                    document.getElementById("h").style.borderColor = 'black'
-                    document.getElementById("h").style.fontcolor = 'black'
-
-                    document.getElementById("btnaburro").style.backgroundColor = 'grey'
-                    document.getElementById("btnaburro").style.borderColor = 'black'
-                    document.getElementById("btnaburro").style.fontcolor = 'black'
-
-                    document.getElementById("ContCom").style.backgroundColor = 'white'
-                    document.getElementById("ContCom").style.borderColor = 'black'
-                    document.getElementById("ContCom").style.fontcolor = 'black'
-
-                    modo = "dia"
+                    console.log("dia");
+                    modo = "dia";
     }
 
-    else if (modo ==="dia"){
-
+else if (modo === "dia"){
+   
         document.getElementById("logo").src = '../Recursos/logo.png'
-
+        document.getElementById("btnnoche").src = '../Recursos/lunita.png'
                     document.getElementById("cont").style.backgroundColor = '#404040'
                     document.getElementById("ContEnt").style.borderColor = 'black'
                     document.getElementById("ContEnt").style.fontcolor = 'black'
@@ -257,6 +242,7 @@ function cambia() {
                     document.getElementById("ContCom").style.borderColor = 'black'
                     document.getElementById("ContCom").style.Color = 'white'
 
+                    console.log("noche")
                     modo = "noche"
     }
     console.log("2")
