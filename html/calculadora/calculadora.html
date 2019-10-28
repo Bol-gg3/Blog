@@ -41,99 +41,187 @@
         var Array_num2 = []
 
         document.getElementById("btn1").onclick = accion;
-        document.getElementById("btn1").onmouseover = accion;
-        document.getElementById("btn1").onmouseout = accion;
 
         document.getElementById("btn2").onclick = accion;
-        document.getElementById("btn2").onmouseover = accion;
-        document.getElementById("btn2").onmouseout = accion;
 
         document.getElementById("btn3").onclick = accion;
-        document.getElementById("btn3").onmouseover = accion;
-        document.getElementById("btn3").onmouseout = accion;
-
+ 
         document.getElementById("btn4").onclick = accion;
-        document.getElementById("btn4").onmouseover = accion;
-        document.getElementById("btn4").onmouseout = accion;
 
         document.getElementById("btn5").onclick = accion;
-        document.getElementById("btn5").onmouseover = accion;
-        document.getElementById("btn5").onmouseout = accion;
-        
+
         document.getElementById("btn6").onclick = accion;
-        document.getElementById("btn6").onmouseover = accion;
-        document.getElementById("btn6").onmouseout = accion;
 
         document.getElementById("btn7").onclick = accion;
-        document.getElementById("btn7").onmouseover = accion;
-        document.getElementById("btn7").onmouseout = accion;
 
         document.getElementById("btn8").onclick = accion;
-        document.getElementById("btn8").onmouseover = accion;
-        document.getElementById("btn8").onmouseout = accion;
 
         document.getElementById("btn9").onclick = accion;
-        document.getElementById("btn9").onmouseover = accion;
-        document.getElementById("btn9").onmouseout = accion;
-
+        
         document.getElementById("btn0").onclick = accion;
-        document.getElementById("btn0").onmouseover = accion;
-        document.getElementById("btn0").onmouseout = accion;
 
         function accion (elEvento) {
 
         
         var identificador = this.id;
-        console.log (pepe)
-        
-        
+        operacion = 0
+    
+    for (i=0; operacion = 0; i++){
         switch (identificador) {
             case "btn1":
             document.getElementById("pantalla").innerHTML += 1;
+            num = 1;
             break;
             
             case "btn2":
             document.getElementById("pantalla").innerHTML += 2;
+            num = 2;
             break;
 
             case "btn3":
             document.getElementById("pantalla").innerHTML += 3;
+            num = 3;
             break;
 
             case "btn4":
             document.getElementById("pantalla").innerHTML += 4;
+            num = 4;
             break;
 
-            switch (pepe) {
             case "btn5":
             document.getElementById("pantalla").innerHTML += 5;
+            num = 5;
             break;
 
             case "btn6":
             document.getElementById("pantalla").innerHTML += 6;
+            num = 6;
             break;
 
             case "btn7":
             document.getElementById("pantalla").innerHTML += 7;
+            num = 7;
             break;
 
             case "btn8":
             document.getElementById("pantalla").innerHTML += 8;
+            num = 8;
             break;
 
             case "btn9":
             document.getElementById("pantalla").innerHTML += 9;
+            num = 9;
             break;
 
             case "btn0":
             document.getElementById("pantalla").innerHTML += 0;
+            num = 0;
             break;
-        
+
+            case "suma":
+            document.getElementById("pantalla").innerHTML += " + ";
+            operacion = 1
+            op
+            break;
+
+            case "resta":
+            document.getElementById("pantalla").innerHTML += " - ";
+            operacion = 1
+            break
+
+            case "divi":
+            document.getElementById("pantalla").innerHTML += " / ";
+            operacion = 1
+            break
+
+            case "mult":
+            document.getElementById("pantalla").innerHTML += " x ";
+            operacion = 1
+            break
+            }
+            Array_num1[i]=num
+          }
+
+          for (i=0; operacion = 0; i++){
+        switch (identificador) {
+            case "btn1":
+            document.getElementById("pantalla").innerHTML += 1;
+            num = 1;
+            break;
+            
+            case "btn2":
+            document.getElementById("pantalla").innerHTML += 2;
+            num = 2;
+            break;
+
+            case "btn3":
+            document.getElementById("pantalla").innerHTML += 3;
+            num = 3;
+            break;
+
+            case "btn4":
+            document.getElementById("pantalla").innerHTML += 4;
+            num = 4;
+            break;
+
+            case "btn5":
+            document.getElementById("pantalla").innerHTML += 5;
+            num = 5;
+            break;
+
+            case "btn6":
+            document.getElementById("pantalla").innerHTML += 6;
+            num = 6;
+            break;
+
+            case "btn7":
+            document.getElementById("pantalla").innerHTML += 7;
+            num = 7;
+            break;
+
+            case "btn8":
+            document.getElementById("pantalla").innerHTML += 8;
+            num = 8;
+            break;
+
+            case "btn9":
+            document.getElementById("pantalla").innerHTML += 9;
+            num = 9;
+            break;
+
+            case "btn0":
+            document.getElementById("pantalla").innerHTML += 0;
+            num = 0;
+            break;
+
+            case "suma":
+            document.getElementById("pantalla").innerHTML += " + ";
+            operacion = 1
+            op
+            break;
+
+            case "resta":
+            document.getElementById("pantalla").innerHTML += " - ";
+            operacion = 1
+            break
+
+            case "divi":
+            document.getElementById("pantalla").innerHTML += " / ";
+            operacion = 1
+            break
+
+            case "mult":
+            document.getElementById("pantalla").innerHTML += " x ";
+            operacion = 1
+            break
+            }
+            Array_num2[i]=num
+          }
+          
+
+
         }
-        
-        }
-         
-        }
+    
 
 
     </script>

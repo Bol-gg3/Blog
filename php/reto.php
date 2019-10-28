@@ -112,15 +112,15 @@
 
         <section id="btnaburro">
 
-        <button id ="pruebas"><img src="../Recursos/luna.png" id="btnnoche"></button>
+        <button id ="btnnoche"><img src="../Recursos/luna.png" id="btnnoche"></button>
 
         <div id="digitos">
 
         <img  src="../Recursos/nuevo reloj/0.jpg" name="h1" class="reloj"><img class="reloj" src="../Recursos/nuevo reloj/0.jpg" name="h2">
-        <span class="puntos">:</span>
+        <img src="../Recursos/nuevo reloj/numer.png">
 
         <img class="reloj" src="../Recursos/nuevo reloj/0.jpg" name="m1"><img class="reloj" src="../Recursos/nuevo reloj/0.jpg" name="m2">
-        <span class="puntos">:</span>
+        <img src="../Recursos/nuevo reloj/numer.png">
 
         <img class="reloj" src="../Recursos/nuevo reloj/0.jpg" name="segundo1"><img class="reloj" src="../Recursos/nuevo reloj/0.jpg" name="s2">
 
@@ -132,6 +132,9 @@
         </section>
 
     </div>
+
+<?php
+?>
 </body>
 
 
@@ -180,7 +183,7 @@ document.images["s2"].src = array_chulo[segundo_derecho] ;
 
 <script>
 /*Modo noche*/
-document.getElementById("pruebas").onclick = cambia;
+document.getElementById("btnnoche").onclick = cambia;
 var modo = "noche"
 
 function cambia() {
