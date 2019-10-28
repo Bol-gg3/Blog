@@ -23,7 +23,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="../css.css">
+    <link rel="stylesheet" type="text/css" href="../newcss.css">
     <title>G3</title>
     <script>
         function popupUploadForm() {
@@ -201,7 +201,7 @@ function cambia() {
 
   console.log("1")
 
-  
+  var modo = "dia"
 
     if (modo ==="noche"){
         document.getElementById("logo").src = '../Recursos/logolight.jpg'
