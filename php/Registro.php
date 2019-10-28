@@ -39,26 +39,22 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 		<br /><br />
 	</form>
 	<?php
-		#INSERTAR DATOS A LA TABLA EN MYSQL
-		 #Salir si alguno de los datos no está presente
-		 if(isset($_POST["insertar"])){
-			if(!isset($_POST["nombre"])||
-			!isset($_POST["passwrd"])|| !isset($_POST["email"]))  exit();
-			#Si todo va bien, se ejecuta esta parte del código...
-			//include_once "conector.php";
-			$nombre = $_POST["nombre"];
-			$passwrd = $_POST["passwrd"];
-			$email = $_POST["email"];
-			$tipo = "usuarios";
-	
-			$sentencia = $base_de_datos->prepare("INSERT INTO usuario VALUES (NULL,?,?,?,?);");
-			$resultado = $sentencia->execute([$nombre, $passwrd, $email, $tipo]);
-			if($resultado === TRUE) header("Location: hecho.php");
-			else echo "Algo salió mal al insertar";
-			}
-		else{ echo "Registrar usuario.";
-			
-		}
+		
+        #Salir si alguno de los datos no está presente
+		if(isset($_POST["insertar"]));
+			if(!isset($_POST["nombre"])|| !isset($_POST["passwrd"])|| !isset($_POST["email"])|| !isset($_POST["tipo"]))  exit();
+        #Si todo va bien, se ejecuta esta parte del código...
+        		include_once "conector.php";
+        		$id_usuario = $_POST["id_usuario"];
+        		$nombre = $_POST["nombre"];
+        		$passwrd = $_POST["passwrd"];
+        		$email = $_POST["email"];
+        		$tipo = "usuarios";
+     
+        		$sentencia = $base_de_datos->prepare("INSERT INTO usuario VALUES (NULL,?,?,?,?);");
+        		$resultado = $sentencia->execute([$nombre, $passwrd, $email, $tipo]);
+        	if($resultado === TRUE) header("Location: reto.php");
+		else echo "Algo salió mal. Por favor verifica que el id del usuario y el correo electronico no existan.";
 		//else echo "Algo salió mal al pulsar. Por favor verifica que el id del usuario y el correo electronico no existan.";
     		?>
 </body>
