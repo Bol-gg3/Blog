@@ -7,6 +7,7 @@
 </head>
 <script type="text/javascript">
 	function closeSelf() {
+		opener.location.reload();
 		self.close();
 		return true;
 	}
@@ -27,7 +28,7 @@
 				<br><br>
 				<input type="submit" id="cancelar" name="cancelar" value="Cancelar" onClick="closeSelf()">
 				<input type="reset" name="limpiar" value="Limpiar">
-				<button type="button" onclick="login.submit()">Iniciar Sesion</button>
+				<button type="button" onclick="login.submit(); closeSelf()">Iniciar Sesion</button>
 			</div>
 
 			<!--Mensaje de error -->
