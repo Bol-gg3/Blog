@@ -28,13 +28,17 @@
 	}
 
 </script>
+<script>
 
+window.onunload = function(){
+  window.opener.location.reload();}
+</script>
 <body>
 	<div>
 		<h1 class="titulo">Iniciar Sesion</h1>
 
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="formulario"
-			name="login">
+			name="login" onsubmit="window.close();">
 			<div>
 				<input type="email" name="email" id="email" class="email" placeholder="Email">
 			</div>
