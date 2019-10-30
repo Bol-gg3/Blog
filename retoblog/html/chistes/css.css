@@ -1,0 +1,15 @@
+header{text-align: center;}
+h1{
+   color: gold; 
+   background-color: grey; 
+   border: gold 2px solid ; 
+   border-radius: 5px; 
+   width: 400px; 
+   text-align: center;}
+#chistesfondo{background-image: url(telon.jpg); 
+                background-size: cover;
+                background-repeat: no-repeat;}
+#contendor{display: grid; grid-template-columns: 300px 700px;   grid-template-areas: "m c";}
+
+#manolo{grid-area: m;}
+#Chiste{grid-area:c; background-image: url(texto.png); padding: 100px; background-repeat: no-repeat;}

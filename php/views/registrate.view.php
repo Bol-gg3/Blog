@@ -4,6 +4,13 @@
 	<meta charset="utf-8">
 	<title>Registrate</title>
 </head>
+<script type="text/javascript">
+	function closeSelf() {
+		opener.location.reload();
+		self.close();
+		return true;
+	}
+</script>
 <body>
 	<div><p>
 			<a href="reto.php">Iniciar Secion como Invitado sin registrarse</a>
@@ -15,7 +22,7 @@
 				<input type="text" name="nombre" class="nombre" placeholder="Nombre usuario">
 			</div>
 			<div class="form-group">
-				<input type="text" name="email" class="email" placeholder="Email del suario">
+				<input type="email" name="email" class="email" placeholder="Email del suario">
 			</div>
 			<div>
 				<input type="password" name="password" class="password" placeholder="Contraseña">
@@ -24,6 +31,7 @@
 			<div class="form-group">
 				<input type="password" name="password2" class="password_btn" placeholder="Confirmar Contraseña"><br><br>
 				<button type="button" onclick="login.submit()">Registrate</button>
+				<input type="submit" id="cancelar" name="cancelar" value="Cancelar" onClick="closeSelf()">
 			</div>
 			
 
@@ -40,7 +48,7 @@
 
 		<p>
 			¿Ya tienes cuenta? <br>
-			<a href="login.php">Iniciar Secion</a>
+			<a href="login.php">Iniciar Sesión</a>
 		</p>
 	</div>
 </body>

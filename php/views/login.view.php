@@ -6,11 +6,27 @@
 	<title>Iniciar Sesion</title>
 </head>
 <script type="text/javascript">
+	
+
+
 	function closeSelf() {
-		opener.location.reload();
+		alert(window.opener.location.href)
+
+		window.opener.location.reload(true);
 		self.close();
 		return true;
+		
 	}
+
+	function validacion(){	
+		return true;
+		var valor = document.getElementById("email").value;
+		if( !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(valor)) ){
+			alert("vvfv");
+			return false;
+		}
+	}
+
 </script>
 
 <body>
@@ -20,15 +36,16 @@
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="formulario"
 			name="login">
 			<div>
-				<input type="text" name="email" class="email" placeholder="Email">
+				<input type="email" name="email" id="email" class="email" placeholder="Email">
 			</div>
 			<br>
 			<div>
 				<input type="password" name="password" class="password_btn" placeholder="Contraseña">
 				<br><br>
-				<input type="submit" id="cancelar" name="cancelar" value="Cancelar" onClick="closeSelf()">
-				<input type="reset" name="limpiar" value="Limpiar">
-				<button type="button" onclick="login.submit(); closeSelf()">Iniciar Sesion</button>
+				<input type="submit" value="Iniciar Sesión" >
+				<input type="button" id="cancelar" name="cancelar" value="Cancelar" onClick="closeSelf()">
+				<input type="reset" name="limpiar" value="Limpiar">	
+						
 			</div>
 
 			<!--Mensaje de error -->

@@ -4,7 +4,7 @@
   require 'conector.php';
 
   if (isset($_SESSION['email'])) {
-    $sentencia = $base_de_datos->prepare('SELECT nombre, email  password FROM usuario WHERE email = :email');
+    $sentencia = $base_de_datos->prepare('SELECT nombre,password,email,tipo  password FROM usuario WHERE email = :email');
     $sentencia->bindParam(':email', $_SESSION['email']);
     $sentencia->execute();
     $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
@@ -13,6 +13,7 @@
 
     if (count($resultado) > 0) {
       $email = $resultado;
+      
     }
   }
 ?>
@@ -27,8 +28,7 @@
     <title>G3</title>
     <script>
         function popupUploadForm() {
-            var newWindow = window.open('registrate.php', 'name', 'height=400,width=600');
-            
+            var newWindow = window.open('registrate.php', 'name', 'height=400,width=600');  
         }
 
         function login1() {
@@ -39,6 +39,9 @@
         }
         function cerrar() {
             window.location="cerrar.php";
+        }
+        function adminSession() {
+            window.location="GestionUsuariosAdmin.php";
         }
     </script>
 </head>
@@ -55,17 +58,15 @@
         <?php if(!empty($email)): ?>
     <div>
       <br> Bienvenido <?= $email['nombre']; ?><br>
-      <br><input type="button" value="Cerrar Session" name="cerrarse" id="cerrarse" onclick="cerrar()">
-      
+      <br>
+      <input type="button" value="Cerrar Session" name="cerrarse" id="cerrarse" onclick="cerrar()"> 
       <input type="button" value="Configurar cuenta" name="config" id="config" onclick="configC()">
+      <?php if($email['password']=="Admin"): ?>
+         <input type="button" value="Acceso Admin" name="adminSession" id="adminSession" onclick="adminSession()">
+         <?php endif; ?>
       <br><br>
     </div>
-    <?php else: ?>
-    
-    
-           
-
-             
+    <?php else: ?>           
             <form action="" method="POST">
                 <label>Accede a la pagina:
                     <input type="submit" value="Registro" name="registro" onclick="popupUploadForm()">

@@ -28,33 +28,25 @@
 	function cerrar() {
 		window.location = "cerrar.php";
 	}
-	function volver() {
-		window.history.back();
-	}
 </script>
 
 <body>
 	<div>
 		<h1 class="titulo">Modificar Email</h1>
-
+		
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="formulario"
 			name="login">
-			<div class="form-group">
-				<input type="text" name="email" class="email" placeholder="Email actual del suario">
-			</div>
-			<br>
 			<div>
-			<input type="text" name="email1" class="email1"  placeholder="Email nuevo">
+			<input type="email" name="email1" class="email1"  placeholder="Email nuevo">
 			</div>
 			<br>
 			<div class="form-group">
-			<input type="text" name="email2" class="email2"  placeholder="Confirmar email nuevo"><br><br>
+			<input type="email" name="email2" class="email2"  placeholder="Confirmar email nuevo"><br><br>
 				<button type="button" onclick="login.submit()">Modificar</button>
 			</div>
 			<br><br>
-			<button type="button" onclick="salir()">Salir</button>
+			<button type="button" onclick="salir()">Inicio</button>
 			<input type="button" value="Cerrar Session" name="cerrarse" id="cerrarse" onclick="cerrar()">
-			<input type="button" value="Volver" name="volver" id="volver" onclick="volver()">
 
 			<!--Mensaje de error -->
 			<?php if(!empty($errores)): ?>
@@ -65,7 +57,6 @@
 			</div>
 			
 		</form>
-		<input type="button" value="Volver" name="volver" id="volver" onclick="volver()">
 		<?php endif; ?>
 	</div>
 </body>

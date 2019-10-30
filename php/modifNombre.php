@@ -5,41 +5,46 @@ $sentencia = $base_de_datos->query("SELECT * FROM usuario;");
 $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
 if (isset($_SESSION['email'])) {
-	header('Location: index.php');
-}
+	$sentencia = $base_de_datos->prepare('SELECT id_usuario,nombre, password, email,tipo    password FROM usuario WHERE email = :email');
+	$sentencia->bindParam(':email', $_SESSION['email']);
+	$sentencia->execute();
+	$resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
+
+	$email = null;
+
+	if (count($resultado) > 0) {
+	  $email = $resultado;
+	}
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$nombre = filter_var(strtolower($_POST['nombre']), FILTER_SANITIZE_STRING);
-	$email = filter_var(strtolower($_POST['email']), FILTER_SANITIZE_STRING);
-	$password = $_POST['password'];
-	$password2 = $_POST['password2'];
+	include_once "conector.php";
+	$nombre = $_POST['nombre'];
+	$nombre2 =$_POST['nombre2'];
 
 	$errores = '';
 
-	if (empty($nombre) or empty($email) or empty($password) or empty($password2)) {
+	if (empty($nombre) or empty($nombre2)) {
 		$errores .= '<li>Por favor rellena todos los datos</li>';
 	} else {
-		include_once "conector.php";
-
-		$sentencia = $base_de_datos->prepare('SELECT * FROM usuario WHERE email = :email');
-		$sentencia->execute(array(':email' => $email));
-		$resultado = $sentencia->fetch();
-
-		if ($resultado != false) {
-			$errores .= '<li>Ya existe un usuario con ese email</li>';
-		}
 		
-		if ($password != $password2) {
-			$errores .= '<li>Las contraseñas no son iguales</li>';
+		
+		if ($nombre != $nombre2) {
+			$errores .= '<li>Los nombres no son iguales</li>';
 		}
 	}
 	if ($errores == '') {
+		$email = filter_var(strtolower($email['email']), FILTER_SANITIZE_STRING);				
+		$sentencia = $base_de_datos->prepare("UPDATE usuario SET nombre = ? WHERE email = ?;");
+		$resultado = $sentencia->execute([$nombre,$email]); 
 		
-			$tipo = "usuarios";
-			
-		$sentencia = $base_de_datos->prepare('INSERT INTO usuario (id_usuario, nombre, password,email,tipo) VALUES (null, :nombre, :password, :email, :tipo)');
-		$resultado = $sentencia->execute(array(':nombre' => $nombre, ':password' => $password, ':email' => $email, ':tipo' => $tipo));
-		header('Location: login.php');
+		
+		
+		//$sentencia = $base_de_datos->prepare("UPDATE usuario SET email = ? WHERE email = ?;");
+		//$resultado = $sentencia->execute($_SESSION['email']);
+	
+	if ($resultado === true)  header('Location: login.php');	
+			else echo "Algo salió mal al modificar el nombre";
+	}
 	}
 }
-require 'views/registrate.view.php';
+require 'views/modifNombre.view.php';
 ?>

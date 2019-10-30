@@ -1,0 +1,33 @@
+#cuerpo{display: grid;
+        grid-template-columns: 50px 100px 100px 100px 100px 100px 50px ;
+        grid-template-rows: 50px 100px 100px 100px 100px 100px 50px;
+        grid-template-areas:". . . . . . ." 
+                            ". p p p p p ."
+                             ". . n1 n2 n3 . ."
+                             ". . n4 n5 n6 c ."
+                             ". . n7 n8 n9 i ."
+                             ". suma resta n0 mult divi .";
+                            
+        background-color: grey;
+    width: 600px;}
+
+#btn1.boton{border: 1px solid greenyellow; color: white ; background-color: green; grid-area: n1;}
+#btn2.boton{border: 1px solid greenyellow; color: white ; background-color: green; grid-area: n2;}
+#btn3.boton{border: 1px solid greenyellow; color: white ; background-color: green; grid-area: n3;}
+#btn4.boton{border: 1px solid greenyellow; color: white ; background-color: green; grid-area: n4;}
+#btn5.boton{border: 1px solid greenyellow; color: white ; background-color: green; grid-area: n5;}
+#btn6.boton{border: 1px solid greenyellow; color: white ; background-color: green; grid-area: n6;}
+#btn7.boton{border: 1px solid greenyellow; color: white ; background-color: green; grid-area: n7;}
+#btn8.boton{border: 1px solid greenyellow; color: white ; background-color: green; grid-area: n8;}
+#btn9.boton{border: 1px solid greenyellow; color: white ; background-color: green; grid-area: n9;}
+#btn0.boton{border: 1px solid greenyellow; color: white ; background-color: green; grid-area: n0;}
+
+#suma.boton{border: 1px solid brown; color: white ; background-color: red; grid-area: suma;}
+#resta.boton{border: 1px solid brown; color: white ; background-color: red; grid-area: resta;}
+#mult.boton{border: 1px solid brown; color: white ; background-color: red; grid-area: mult;}
+#divi.boton{border: 1px solid brown; color: white ; background-color: red; grid-area: divi;}
+
+#igual.boton{border: 1px solid goldenrod; color: white ; background-color: yellow; grid-area: c;}
+#clear.boton{border: 1px solid goldenrod; color: white ; background-color: yellow; grid-area: i;}
+
+#pantalla{border: 1px solid rgb(32, 190, 218); color: white ; background-color: rgb(55, 0, 255); grid-area: p;}

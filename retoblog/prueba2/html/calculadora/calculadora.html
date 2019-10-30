@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+    <div id="cuerpo">
+
+        <div id ="pantalla"></div>
+
+        <div class="boton" id="btn1">1</div>
+        <div class="boton" id="btn2">2</div>
+        <div class="boton" id="btn3">3</div>
+        <div class="boton" id="btn4">4</div>
+        <div class="boton" id="btn5">5</div>
+        <div class="boton" id="btn6">6</div>
+        <div class="boton" id="btn7">7</div>
+        <div class="boton" id="btn8">8</div>
+        <div class="boton" id="btn9">9</div>
+        <div class="boton" id="btn0">0</div>
+
+        <div class="boton" id="suma">+</div>
+        <div class="boton" id="resta">-</div>
+        <div class="boton" id="divi">÷</div>
+        <div class="boton" id="mult">x</div>
+
+        <div class="boton" id="igual">=</div>
+        <div class="boton" id="clear">C</div>
+
+    </div>
+    
+
+    <script>
+        
+        var Array_num1 = []
+        var Array_num2 = []
+
+        document.getElementById("btn1").onclick = accion;
+        document.getElementById("btn1").onmouseover = accion;
+        document.getElementById("btn1").onmouseout = accion;
+
+        document.getElementById("btn2").onclick = accion;
+        document.getElementById("btn2").onmouseover = accion;
+        document.getElementById("btn2").onmouseout = accion;
+
+        document.getElementById("btn3").onclick = accion;
+        document.getElementById("btn3").onmouseover = accion;
+        document.getElementById("btn3").onmouseout = accion;
+
+        document.getElementById("btn4").onclick = accion;
+        document.getElementById("btn4").onmouseover = accion;
+        document.getElementById("btn4").onmouseout = accion;
+
+        document.getElementById("btn5").onclick = accion;
+        document.getElementById("btn5").onmouseover = accion;
+        document.getElementById("btn5").onmouseout = accion;
+        
+        document.getElementById("btn6").onclick = accion;
+        document.getElementById("btn6").onmouseover = accion;
+        document.getElementById("btn6").onmouseout = accion;
+
+        document.getElementById("btn7").onclick = accion;
+        document.getElementById("btn7").onmouseover = accion;
+        document.getElementById("btn7").onmouseout = accion;
+
+        document.getElementById("btn8").onclick = accion;
+        document.getElementById("btn8").onmouseover = accion;
+        document.getElementById("btn8").onmouseout = accion;
+
+        document.getElementById("btn9").onclick = accion;
+        document.getElementById("btn9").onmouseover = accion;
+        document.getElementById("btn9").onmouseout = accion;
+
+        document.getElementById("btn0").onclick = accion;
+        document.getElementById("btn0").onmouseover = accion;
+        document.getElementById("btn0").onmouseout = accion;
+
+        function accion () {
+        var pepe = this.id;
+        console.log (pepe)
+        
+        
+        switch (pepe) {
+            case "btn1":
+            console.log(1)
+            break;
+
+            case "btn2":
+            console.log(2)
+            break;
+
+            case "btn3":
+            console.log(3)
+            break;
+
+            case "btn4":
+            console.log(4)
+            break;
+
+            switch (pepe) {
+            case "btn5":
+            console.log(5)
+            break;
+
+            case "btn6":
+            console.log(6)
+            break;
+
+            case "btn7":
+            console.log(7)
+            break;
+        
+        }
+        
+        }
+         
+        }
+
+
+    </script>
+</body>
+</html>

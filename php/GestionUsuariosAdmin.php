@@ -9,135 +9,77 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
 <head>
 	<meta charset="UTF-8">
-	<title>Tabla Usuarios</title>
+	<title>Admin cuentas</title>
 	<style>
 		table,
 		th,
 		td {
-			border: 1px solid black;
+			border: 2px solid black;
 		}
 	</style>
 </head>
+<script>
 
-<body>
-	<br>
-	<table>
-		<thead>
-			<tr>
-				<th>ID Usuario</th>
-				<th>Nombre</th>
-				<th>Contraseña</th>
-				<th>Email</th>
-				<th>Tipo</th>
-			</tr>
-		</thead>
-		<tbody>
-			<!--
+	function modificarTipoUsuario() {
+		window.location = "modifEmail.php";
+	}
+
+	function eliminarCuentas() {
+		window.location = "eliminarCuentas.php";
+	}
+
+	function salir() {
+		window.location = "reto.php";
+	}
+
+	function cerrar() {
+		window.location = "cerrar.php";
+	}
+</script>
+
+<body><center>
+	<div>
+		<h1 class="titulo">Administración de cuentas</h1>
+		<br>
+		<button type="button" onclick="salir()">Inicio</button>
+		<input type="button" value="Cerrar Session" name="cerrarse" id="cerrarse" onclick="cerrar()">
+		<br><br>
+		<button type="button" onclick="modificarTipoUsuario()">Modificar tipo de usuario</button>
+		<button type="button" onclick="eliminarCuentas()">Eliminar usuario</button>
+		<br><br>
+		
+		<table>
+			<thead>
+				<tr>
+					<th>ID Usuario</th>
+					<th>Nombre</th>
+					<th>Contraseña</th>
+					<th>Email</th>
+					<th>Tipo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!--
 				Atención aquí, sólo esto cambiará
 				Pd: no ignores las llaves de inicio y cierre {}
 			-->
-			<?php foreach($usuario as $usuario){ ?>
-			<tr>
-				<td><?php echo $usuario->id_usuario?></td>
-				<td><?php echo $usuario->nombre?></td>
-				<td>*********</td>
-				<td><?php echo $usuario->email?></td>
-				<td><?php echo $usuario->tipo?></td>
-			</tr>
-			<?php } ?>
-		</tbody>
-	</table>
-	<br>
-	<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-
-		<label for="id_usuario">ID Usuario:</label>
-		<input name="id_usuario"  type="text" id="id_usuario" placeholder="Escribe el id del usuario..."
-			><br><br>
-		<label for="nombre">Nombre del usuario:</label>
-		<input name="nombre" type="text" id="nombre" placeholder="Escribe el nombre...">
-		<br><br>
-		<label for="passwrd">Contraseña del usuario:</label>
-		<input name="passwrd" type="password" id="passwrd" placeholder="Escribe el contraseña...">
-		<br><br>
-		<label for="email">Email del usuario:</label>
-		<input name="email" type="email" id="email" placeholder="Escribe el correo electonico...">
-		<br><br>
-		<label for="tipo">Tipo de usuario:</label>
+				<?php foreach($usuario as $usuario){ ?>
+				<tr>
+					<td><?php echo $usuario->id_usuario?></td>
+					<td><?php echo $usuario->nombre?></td>
+					<td>*********</td>
+					<td><?php echo $usuario->email?></td>
+					<td><?php echo $usuario->tipo?></td>
+				</tr>
+				<?php } ?>
+			</tbody>
+		</table>
+		
 		<br>
-		<select name="tipo" type="text">
-			<option value="usuarios" selected>Usuarios</option>
-			<option value="usuarios_verificado">Usuarios Verificado</option>
-			<option value="administrador">Administrador</option>
-		</select>
-		<br><br>
-		<input type="submit" id="insertar" value="insertar" name="insertar" value="Registrar">
-		<input type="submit" id="eliminar" name="eliminar" value="Eliminar">
-		<input type="submit" id="modificar" name="modificar" value="Modificar">
-		<input type="reset" name="limpiar" value="Limpiar">
-		<br/><br/>
-	</form>
-	<?php
-		#INSERTAR DATOS A LA TABLA EN MYSQL
-		 #Salir si alguno de los datos no está presente
-		if(isset($_POST["insertar"])){
-		if(!isset($_POST["nombre"])||
-		!isset($_POST["passwrd"])|| !isset($_POST["email"])|| !isset($_POST["tipo"]))  exit();
-        #Si todo va bien, se ejecuta esta parte del código...
-        include_once "conector.php";
-		$nombre = $_POST["nombre"];
-        $passwrd = $_POST["passwrd"];
-        $email = $_POST["email"];
-        $tipo = $_POST["tipo"];
-
-        $sentencia = $base_de_datos->prepare("INSERT INTO usuario VALUES (NULL,?,?,?,?);");
-        $resultado = $sentencia->execute([$nombre, $passwrd, $email, $tipo]);
-		if($resultado === TRUE) header("Location: GestionUsuariosAdmin.php");
-		else echo "Algo salió mal al insertar";
-		}
-
-		#ELEMINAR DATOS A LA TABLA EN MYSQL
-		elseif(isset($_POST["eliminar"])){
-		if(!isset($_POST["id_usuario"])){
-			exit();
-		}
-		$id_usuario = $_POST["id_usuario"];
-		$sentencia = $base_de_datos->prepare("DELETE FROM usuario WHERE id_usuario = ?;");
-		$resultado = $sentencia->execute([$id_usuario]);
-		if ($resultado === true) header("Location: GestionUsuariosAdmin.php");
-		else echo "Algo salió mal al eliminar";
-		}
-
-
-
-		#MODIFICAR DATOS A LA TABLA EN MYSQL
-		elseif(isset($_POST["modificar"])){
-			if (
-				!isset($_POST["id_usuario"]) ||
-				!isset($_POST["nombre"]) ||
-				!isset($_POST["passwrd"]) ||
-				!isset($_POST["email"])||
-				!isset($_POST["tipo"])
-			) {
-				exit();
-			}
-			#Si todo va bien, se ejecuta esta parte del código...
-			$id_usuario = $_POST["id_usuario"];
-			$nombre = $_POST["nombre"];
-			$passwrd = $_POST["passwrd"];
-			$email = $_POST["email"];
-			$tipo = $_POST["tipo"];
-			$miconsulta = "UPDATE usuario SET id_usuario = ?,nombre = ?, passwrd = ?, email = ?, tipo = ? WHERE id_usuario = ?;";
-			echo $miconsulta;
-			$sentencia = $base_de_datos->prepare("UPDATE usuario SET nombre = ?, email = ?, tipo = ? WHERE id_usuario = ?;");
-			$resultado = $sentencia->execute([$nombre,$email,$tipo, $id_usuario]); # Pasar en el mismo orden de los ?
-			if ($resultado === true)  header("Location: GestionUsuariosAdmin.php");
-			else echo "Algo salió mal al Modificar";
-		}
-		else{ echo "Registrar usuario.";
-			
-		}
-		//else echo "Algo salió mal al pulsar. Por favor verifica que el id del usuario y el correo electronico no existan.";
-    ?>
+		<br>
+	</div>
+	</div>
+	</center>
 </body>
 
 </html>
