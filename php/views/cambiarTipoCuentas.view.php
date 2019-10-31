@@ -49,23 +49,32 @@
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="formulario"
 			name="formu">
 			<div>
-				<input type="text" name="id_usuario1" class="id_usuario1" placeholder="ID usuario a eliminar">
+				<input type="text" name="id_usuario1" class="id_usuario1" placeholder="ID usuario a cambiar">
 			</div>
 			<br>
 			<div>
-				<input type="text" name="id_usuario2" class="id_usuario2" placeholder="Confirmar ID">
+				<input type="text" name="id_usuario2" class="id_usuario2" placeholder="Confirmar ID usaurio">
 			</div>
 			<br>
+			<div>
+				<label for="tipo">Tipo de usuario:</label><br>
+				<select name="tipo" type="text">
+					<option value="usuario" selected>Usuario</option>
+					<option value="Verificado">Verificado</option>
+					<option value="Admin">Administrador</option>
+				</select>
+			</div>
+			<br><br><br>
 			<div class="form-group">
-				<button type="submit" id="borrarUser" onclick="formu.submit()">Eliminar cuenta</button>
-			<!--Mensaje de error -->
-			<?php if(!empty($errores)): ?>
-			<div>
-				<ul>
-					<?php echo $errores; ?>
-				</ul>
-			</div>
-			<?php endif; ?>
+				<button type="submit" id="borrarUser" onclick="formu.submit()">Modificar tipo de cuenta</button>
+				<!--Mensaje de error -->
+				<?php if(!empty($errores)): ?>
+				<div>
+					<ul>
+						<?php echo $errores; ?>
+					</ul>
+				</div>
+				<?php endif; ?>
 		</form>
 		<br><br>
 		<button type="button" onclick="salir()">Inicio</button>

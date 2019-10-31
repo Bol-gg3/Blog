@@ -1,13 +1,12 @@
 <?php 
 session_start();
 include_once "conector.php";
-$sentencia = $base_de_datos->query("SELECT * FROM usuario;");
+$sentencia = $base_de_datos->query("SELECT * FROM entrada;");
 $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
 
 if (isset($_SESSION['email'])) {
-	$sentencia = $base_de_datos->prepare('SELECT id_usuario,nombre, password, email,tipo    password FROM usuario WHERE email = :email');
-	$sentencia->bindParam(':email', $_SESSION['email']);
+	$sentencia = $base_de_datos->prepare('SELECT id_entrada,fecha_entrada, entradas, id_usuario FROM entrada');
 	$sentencia->execute();
 	$resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
 
@@ -48,5 +47,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } 
 }
 
-require 'views/eliminarCuentas.view.php';
+require 'views/eliminarEntradas.view.php';
 ?>

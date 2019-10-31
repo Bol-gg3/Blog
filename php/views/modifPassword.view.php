@@ -22,7 +22,11 @@
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="formulario"
 			name="login">
 			<div>
-			<input type="password" name="password" class="password"  placeholder="Contraseña">
+			<input type="password" name="password3" class="password3"  placeholder="Contraseña antigua">
+			</div>
+			<br>
+			<div>
+			<input type="password" name="password" class="password"  placeholder="Contraseña nueva">
 			</div>
 			<br>
 			<div class="form-group">

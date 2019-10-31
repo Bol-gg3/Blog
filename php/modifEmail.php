@@ -19,8 +19,8 @@ if (isset($_SESSION['email'])) {
 	}
  
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$email1 = $_POST['email1'];
-	$email2 =$_POST['email2'];
+	$email1 = filter_var(strtolower($_POST['email1']), FILTER_SANITIZE_STRING);
+	$email2 = filter_var(strtolower($_POST['email2']), FILTER_SANITIZE_STRING);
 	$errores = '';
 
 	if (empty($email1) or empty($email2)) {

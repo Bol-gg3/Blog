@@ -5,7 +5,7 @@ $sentencia = $base_de_datos->query("SELECT * FROM usuario;");
 $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
 if (isset($_SESSION['email'])) {
-	$sentencia = $base_de_datos->prepare('SELECT id_usuario,nombre, password, email,tipo    password FROM usuario WHERE email = :email');
+	$sentencia = $base_de_datos->prepare('SELECT id_usuario,nombre, email,tipo,password    password FROM usuario WHERE email = :email');
 	$sentencia->bindParam(':email', $_SESSION['email']);
 	$sentencia->execute();
 	$resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
@@ -17,18 +17,23 @@ if (isset($_SESSION['email'])) {
 	}
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	include_once "conector.php";
+	$password4 = filter_var(strtolower($email['password']), FILTER_SANITIZE_STRING);
 	$password = filter_var($_POST['password']);
 	$password2 = filter_var($_POST['password2']);
+	$password3 = filter_var($_POST['password3']);
 
 	$errores = '';
 
 	if (empty($password) or empty($password2)) {
 		$errores .= '<li>Por favor rellena todos los datos</li>';
 	} else {
-		
+
+		if ($password3 != $password4) {
+			$errores .= '<li>La contraseña antigua no es correcta</li>';
+		}
 		
 		if ($password != $password2) {
-			$errores .= '<li>Los nombres no son iguales</li>';
+			$errores .= '<li>La contraseña nueva y de confrimación no son iguales</li>';
 		}
 	}
 	if ($errores == '') {
@@ -46,5 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 	}
 }
+
 require 'views/modifPassword.view.php';
 ?>

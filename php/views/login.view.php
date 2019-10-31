@@ -5,9 +5,7 @@
 	<meta charset="utf-8">
 	<title>Iniciar Sesion</title>
 </head>
-<script type="text/javascript">
-	
-
+<script language="JavaScript" type="text/javascript">
 
 	function closeSelf() {
 		alert(window.opener.location.href)
@@ -31,14 +29,15 @@
 <script>
 
 window.onunload = function(){
-  window.opener.location.reload();}
+  window.opener.location.reload();
+  }
 </script>
 <body>
 	<div>
 		<h1 class="titulo">Iniciar Sesion</h1>
 
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="formulario"
-			name="login" onsubmit="window.close();">
+			name="formu" >
 			<div>
 				<input type="email" name="email" id="email" class="email" placeholder="Email">
 			</div>
@@ -46,7 +45,7 @@ window.onunload = function(){
 			<div>
 				<input type="password" name="password" class="password_btn" placeholder="Contraseña">
 				<br><br>
-				<input type="submit" value="Iniciar Sesión" >
+				<input type="submit" id="iniciar" value="Iniciar Sesión" >
 				<input type="button" id="cancelar" name="cancelar" value="Cancelar" onClick="closeSelf()">
 				<input type="reset" name="limpiar" value="Limpiar">	
 						

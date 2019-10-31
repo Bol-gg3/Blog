@@ -21,6 +21,11 @@ $errores = '';
 	$resultado = $sentencia->fetch();
 	if ($resultado !== false) {
 		$_SESSION['email'] = $email;
+		echo "<script>alert(window.opener.location.href)
+
+		window.opener.location.reload(true);
+		self.close();
+		return true;</script>";
 		header('Location: index.php');
 	} else {
 		$errores .= '<li>Datos Incorrectos</li>';

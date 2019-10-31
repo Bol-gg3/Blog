@@ -6,7 +6,6 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 <!--Recordemos que podemos intercambiar HTML y PHP como queramos-->
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 	<meta charset="UTF-8">
 	<title>Admin cuentas</title>
@@ -19,13 +18,20 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 	</style>
 </head>
 <script>
-
 	function modificarTipoUsuario() {
-		window.location = "modifEmail.php";
+		window.location = "cambiarTipoCuentas.php";
 	}
 
 	function eliminarCuentas() {
 		window.location = "eliminarCuentas.php";
+	}
+
+	function eliminarComentario() {
+		window.location = "eliminarComentario.php";
+	}
+
+	function eliminarEntradas() {
+		window.location = "eliminarEntradas.php";
 	}
 
 	function salir() {
@@ -37,48 +43,51 @@ $usuario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 	}
 </script>
 
-<body><center>
-	<div>
-		<h1 class="titulo">Administración de cuentas</h1>
-		<br>
-		<button type="button" onclick="salir()">Inicio</button>
-		<input type="button" value="Cerrar Session" name="cerrarse" id="cerrarse" onclick="cerrar()">
-		<br><br>
-		<button type="button" onclick="modificarTipoUsuario()">Modificar tipo de usuario</button>
-		<button type="button" onclick="eliminarCuentas()">Eliminar usuario</button>
-		<br><br>
-		
-		<table>
-			<thead>
-				<tr>
-					<th>ID Usuario</th>
-					<th>Nombre</th>
-					<th>Contraseña</th>
-					<th>Email</th>
-					<th>Tipo</th>
-				</tr>
-			</thead>
-			<tbody>
-				<!--
+<body>
+	<center>
+		<div>
+			<h1 class="titulo">Administración de cuentas</h1>
+			<br>
+			<button type="button" onclick="salir()">Inicio</button>
+			<input type="button" value="Cerrar Session" name="cerrarse" id="cerrarse" onclick="cerrar()">
+			<br><br>
+			<button type="button" onclick="modificarTipoUsuario()">Modificar tipo de usuario</button>
+			<button type="button" onclick="eliminarCuentas()">Eliminar usuario</button>
+			<button type="button" onclick="eliminarComentario()">Eliminar comentarios</button>
+			<button type="button" onclick="eliminarEntradas()">Eliminar entradas</button>
+			<br><br>
+
+			<table>
+				<thead>
+					<tr>
+						<th>ID Usuario</th>
+						<th>Nombre</th>
+						<th>Contraseña</th>
+						<th>Email</th>
+						<th>Tipo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!--
 				Atención aquí, sólo esto cambiará
 				Pd: no ignores las llaves de inicio y cierre {}
 			-->
-				<?php foreach($usuario as $usuario){ ?>
-				<tr>
-					<td><?php echo $usuario->id_usuario?></td>
-					<td><?php echo $usuario->nombre?></td>
-					<td>*********</td>
-					<td><?php echo $usuario->email?></td>
-					<td><?php echo $usuario->tipo?></td>
-				</tr>
-				<?php } ?>
-			</tbody>
-		</table>
-		
-		<br>
-		<br>
-	</div>
-	</div>
+					<?php foreach($usuario as $usuario){ ?>
+					<tr>
+						<td><?php echo $usuario->id_usuario?></td>
+						<td><?php echo $usuario->nombre?></td>
+						<td>*********</td>
+						<td><?php echo $usuario->email?></td>
+						<td><?php echo $usuario->tipo?></td>
+					</tr>
+					<?php } ?>
+				</tbody>
+			</table>
+
+			<br>
+			<br>
+		</div>
+		</div>
 	</center>
 </body>
 

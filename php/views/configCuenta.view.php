@@ -1,7 +1,7 @@
 <?php
 
   if (isset($_SESSION['email'])) {
-    $sentencia = $base_de_datos->prepare('SELECT id_usuario,nombre, password, email,tipo    password FROM usuario WHERE email = :email');
+    $sentencia = $base_de_datos->prepare('SELECT id_usuario,nombre, email,password,tipo    password FROM usuario WHERE email = :email');
     $sentencia->bindParam(':email', $_SESSION['email']);
     $sentencia->execute();
     $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);

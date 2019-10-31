@@ -49,7 +49,7 @@
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="formulario"
 			name="formu">
 			<div>
-				<input type="text" name="id_usuario1" class="id_usuario1" placeholder="ID usuario a eliminar">
+				<input type="text" name="id_usuario1" class="id_usuario1" placeholder="ID usaurio a eliminar">
 			</div>
 			<br>
 			<div>

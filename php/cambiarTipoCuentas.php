@@ -36,9 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	include_once "conector.php";
 
-		$id_usuario1 = $_POST['id_usuario1'];
-		$sentencia = $base_de_datos->prepare("DELETE FROM usuario WHERE id_usuario = ?;");
-		$resultado = $sentencia->execute([$id_usuario1]);	
+		$id_usuario1 = $_POST['id_usuario1'];	
+		$tipo = $_POST['tipo'];			
+		$sentencia = $base_de_datos->prepare("UPDATE usuario SET tipo = ? WHERE id_usuario = ?;");
+		$resultado = $sentencia->execute([$tipo,$id_usuario1]);
 
 
 	if ($resultado === true) header("Location: GestionUsuariosAdmin.php");
@@ -48,5 +49,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } 
 }
 
-require 'views/eliminarCuentas.view.php';
+require 'views/cambiarTipoCuentas.view.php';
 ?>
