@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="contenedor">
+
+        <article id ="info">     
+        
+        </article>
+
+        <div id ="panel">Dale Click</div>
+        <article id ="score"></article>
+
+    </div>
+
+    <button id ="btn10">10 seguntos</button>
+    <button id ="btn20">20 seguntos</button>
+    <button id ="btn30">30 seguntos</button>
+
+    <script>
+var nombre= prompt("introduce tu nombre");
+if (nombre=="" || nombre==null) { nombre="Invitado"}
+
+document.getElementById("info").innerHTML ="Bienvenido al ClickyMaster3000 : "+nombre+ ", aqui podras comprobar tu destreza en el arte de los clicks. Elige un tiempo y averigua tu rapidez"
+
+document.getElementById("btn10").onclick = empezar;
+document.getElementById("btn20").onclick = empezar;
+document.getElementById("btn30").onclick = empezar;
+document.getElementById("panel").onclick = contar;
+
+var totalTime = 0;
+var contador = 0;
+function contar() {
+contador = contador+1
+
+console.log(contador)
+}
+
+function empezar() {
+    var comprobante = 1
+    if(this.id==="btn10"){totalTime = 10;}
+    else if(this.id==="btn20"){totalTime = 20;}
+    else if(this.id==="btn30"){totalTime = 30;}
+    updateClock();
+    
+    }
+
+
+function updateClock() {
+    
+    document.getElementById('panel').innerHTML = totalTime;
+    if(totalTime==0){
+        alert('Final');
+        document.getElementById("score").innerHTML += nombre +" : "+contador+"<br>"
+        
+        document.getElementById("panel").innerHTML = "Dale Click"
+        contador = 0;
+        }
+    else{
+        totalTime-=1;
+        setTimeout("updateClock()",1000);}
+}
+    
+
+
+
+    </script>
+</body>
+</html>
