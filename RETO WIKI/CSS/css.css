@@ -1,0 +1,56 @@
+header {
+    background-color: black;
+    padding: .5em;
+    text-align: center;
+}
+
+body div {
+    background-color: pink;
+    padding: 0.1em;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    
+    }
+
+    li {
+        /*margin-left: 29%;*/
+        margin-right: 1%;
+        margin-right: 1%;
+        font-size: 15px;
+        text-align: center;
+        height: 20px;
+        flex-grow: 1;
+       
+
+    }
+
+nav {
+    background-color: #020E26;
+    margin-bottom: 0.2%;
+
+    padding: 0.01em;
+    margin-top: 0.2%;
+
+}
+
+
+nav li a {
+    color: white;
+    background-color: #0B3640;
+    display: block;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background: #F2C744;
+    color: black;
+    
+}
+
+footer {
+    background-color: green;
+    padding: .5em;
+}
