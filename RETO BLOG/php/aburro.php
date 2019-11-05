@@ -16,7 +16,7 @@ echo "Bienvenido";
 
     <div id ="ContendeorJuegos">
 
-        <article id ="ItemJuego1"><h2>Calculadora</h2></article>
+        <article id ="ItemJuego1"><h2>clicky</h2></article>
         <article id ="ItemJuego2"><h2>Dados</h2></article>
         <article id ="ItemJuego3"><h2>Memoria</h2></article>
         <article id ="ItemJuego4"><h2>chistes</h2></article>
@@ -44,7 +44,7 @@ window.onload = function() {
       document.getElementById("ItemJuego4").onclick = clicky;
 }
 function clicky(elEvento) {
-    if (this.id === "ItemJuego1"){window.open('../html/dados/dado.html')}
+    if (this.id === "ItemJuego1"){window.open('../html/contador/contador.html')}
     else if (this.id === "ItemJuego2"){window.open('../html/dados/dado.html')}
     else if (this.id === "ItemJuego3"){window.open('../html/dados/dado.html')}
     else if (this.id === "ItemJuego4"){window.open('../html/chistes/chistes.html')}
@@ -65,7 +65,7 @@ function resalta(elEvento) {
         case 'mouseover':
         
         if(identificador === op1){
-          this.style.backgroundImage = "url('../Recursos/calculadora-2.jpg')";
+          this.style.backgroundImage = "url('../Recursos/clicky-2.jpg')";
           }
         if(identificador === op2){
             this.style.backgroundImage = "url('../Recursos/dados-2.jpg')"; 
@@ -85,7 +85,7 @@ function resalta(elEvento) {
           
         case 'mouseout':
         if(identificador === op1){
-          this.style.backgroundImage = "url('../Recursos/calculadora.jpg')";
+          this.style.backgroundImage = "url('../Recursos/clicky.jpg')";
           }
         if(identificador === op2){
             this.style.backgroundImage = "url('../Recursos/dados.jpg')"; 
