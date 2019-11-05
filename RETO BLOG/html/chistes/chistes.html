@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css.css">
     <title>Document</title>
 </head>
+
+<div id ="Marcador">MARCADOR : </div>
 <body >
     <div id="chistesfondo">
     <header id ="header">
@@ -17,14 +19,81 @@
        <img src="manolo.png" alt=""> 
     </div>
     <div id="Chiste">
-        <article> Esta un señor con los ojos cerrados y le dice su amigo:<br>
-                -¿oye porque cierras los ojos?<br>
-                -El ordenador me dijo que cerrase las pestañas.<br>
+        <article id = "texto"> 
+                    Bienvenidos : Soy manolo y soy PROGRAMADOR y aparte comico.<br> 
+                    Si os gustan mis chistes podeis APLAUDIR y si no ABUCHEARME.<br>
+                    Tomare nota para mejorar<br>
+                      
          </article>
     </div>
+
+    <button id ="ap">aplauso</button>
+    <button id ="ab">abucheo</button>
+    
+
+  
 </div>
+
+
     <script>
-    window.onload = function (){alert("La siguiente pagina contiene chistes muy malos")}
+    
+    var contador = Number.parseInt(localStorage.getItem("contadorlocal2"))     
+    window.onload = function (){alert("La siguiente pagina contiene chistes muy malos");
+                                var contador = Number.parseInt(localStorage.getItem("contadorlocal2"))
+                                document.getElementById("Marcador").innerHTML = "MARCADOR : "+contador;
+                                }
+
+    var chistes = [];
+    
+    chistes[0] = "¿Qué es un terapeuta? – 1024 Gigapeutas." 
+    chistes[1] = "¿Que le habla un bit al otro? Nos vemos en el bus."
+    chistes[2] = "¿Cuántos programadores hacen falta para cambiar una bombilla? – Ninguno, porque es un problema hardware."
+    chistes[3] = "Se abre el telón, aparece un informático y dice: ¡qué habéis tocado que no se cierra el telón!."
+    chistes[4] = "Están 1023 gigabytes en una fiesta, llegan 1048576 más y dicen: ¿Nos hacemos un peta?."
+    chistes[5] = "Los verdaderos programadores programan en binario."
+    chistes[6] = "Sólo hay 10 tipos de personas en este bendito mundo, las que entienden binario y las que no."
+    chistes[7] = "¿Qué le dice un .GIF a un .JPEG? -Anímate viejo."
+    chistes[8] = "¿Qué es una mujer objeto? Una instancia de una mujer con clase."
+    chistes[9] = "Error 0094782: No se detecta ningún teclado pulse una tecla para continuar."
+    chistes[10] = "¿Qué le menciona una IP a otra? — ¿Qué tramas?."
+
+  
+
+    document.getElementById("ap").onclick = function1;
+    document.getElementById("ab").onclick = function1;
+
+    
+
+    function function1(){      
+                                var random = Math.floor(Math.random() * 11);                         
+                                document.getElementById("texto").innerHTML = chistes[random]
+                                console.log (chistes[random])
+                                                           
+                                if (this.id==="ap") {
+                                    console.log("aplauso")
+                                    contador = Number.parseInt(contador)+1      
+                                    localStorage.setItem("contadorlocal2", contador)                            
+                                    console.log(contador);
+                                    var sonidito = new Audio('aplausos.mp3');
+  
+                                }
+
+                                else if (this.id === "ab"){
+                                    console.log("abucheo")
+                                    contador = Number.parseInt(contador)-1 
+                                    localStorage.setItem("contadorlocal2", contador)
+                                    console.log(contador);
+                                    var sonidito = new Audio('abucheo.mp3');
+                                }
+                                sonidito.play();
+                                
+                                document.getElementById("Marcador").innerHTML = "MARCADOR : "+contador;
+                            }
+
+
+
+
+
     </script>
     </div>
 </body>

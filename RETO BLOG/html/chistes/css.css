@@ -9,7 +9,12 @@ h1{
 #chistesfondo{background-image: url(telon.jpg); 
                 background-size: cover;
                 background-repeat: no-repeat;}
-#contendor{display: grid; grid-template-columns: 300px 700px;   grid-template-areas: "m c";}
+#contendor{display: grid; grid-template-columns: 300px 350px 350px 200px;   grid-template-areas: "m  c c "
+                                                                                           ".  ab ap";}
 
 #manolo{grid-area: m;}
 #Chiste{grid-area:c; background-image: url(texto.png); padding: 100px; background-repeat: no-repeat;}
+#texto{font-size: 200%; color:#00FF41;}
+#ab{color: gold; border: gold 2px solid ;    background-color: grey; grid-area: ab; height: 50px;}
+#ap{color: gold; border: gold 2px solid ;    background-color: grey; grid-area: ap; height: 50px;}
+#Marcador{color: red; border: gold 2px solid ;    background-color: grey; grid-area: cont; margin-bottom: -20px ; height: 30px;}

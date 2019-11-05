@@ -1,0 +1,35 @@
+#contenedor{
+    color: gold; 
+    border: gold 2px solid ; 
+    background-color: lightgray; 
+    display: grid; 
+    grid-template-areas: ". i i i ."
+                         ". . p . ."
+                         ". s s s."  ;}
+
+#info{
+    color: gold; 
+    background-color: grey; 
+    grid-area: i; 
+    height: 20vh; 
+    display: flex; 
+    width: 1300px;}
+
+#panel{
+    color: goldenrod; 
+    border: gold 2px solid ; 
+    background-color: gray; 
+    grid-area: p;
+    height: 15vh; 
+    margin-bottom: 10px;
+    margin-top:  10px; 
+    width: 300px; 
+    text-align: center;
+    font-size: 200%;}
+
+#score{
+    color: gold; 
+    border: gold 2px solid ; 
+    background-color: grey; 
+    grid-area: s;}
+
