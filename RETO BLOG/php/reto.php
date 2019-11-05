@@ -4,7 +4,7 @@
   require 'conector.php';
 
   if (isset($_SESSION['email'])) {
-    $sentencia = $base_de_datos->prepare('SELECT id_usuario,nombre,password,email,tipo  password FROM usuario WHERE email = :email');
+    $sentencia = $base_de_datos->prepare('SELECT id_usuario,nombre,password,email,tipo FROM usuario WHERE email = :email');
     $sentencia->bindParam(':email', $_SESSION['email']);
     $sentencia->execute();
     $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
@@ -19,7 +19,7 @@
       $email = $resultado;
       
     }
-  }
+  } 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,6 +50,11 @@
         function adminSession() {
             window.location = "GestionUsuariosAdmin.php";
         }
+
+        function InsertarDatos() {
+            document.myform.submit();
+            window.location = "reto.php";
+        }
     </script>
 </head>
 
@@ -65,31 +70,43 @@
                 <br>
                 <input type="button" value="Cerrar Session" name="cerrarse" id="cerrarse" onclick="cerrar()">
                 <input type="button" value="Configurar cuenta" name="config" id="config" onclick="configC()">
-                <?php if($email['password']=="Admin"|| $email['password']=="SuperAdmin" ): ?>
+                <?php if($email['tipo']=="Admin"|| $email['tipo']=="SuperAdmin" ): ?>
                 <input type="button" value="Acceso Admin" name="adminSession" id="adminSession"
                     onclick="adminSession()">
                 <?php endif; ?>
                 <br><br>
             </div>
-            <?php else: ?>
+            <?php else: $email = null;?>
             <form action="" method="POST">
                 <label>Accede a la pagina:
                     <input type="submit" value="Registro" name="registro" onclick="popupUploadForm()">
                     <input type="submit" value="Login" name="login" id="login" onclick="login1()">
                 </label>
             </form>
-
             <?php endif; ?>
         </header>
         <section id="ContEnt">
-             <p>Escribe una entrada</p>
-            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <?php if($email['tipo']=="Admin"|| $email['tipo']=="SuperAdmin" || $email['tipo']=="Verificado"|| $email['tipo']=="Usuario"): ?>
+            <p>Escribe una entrada</p>
+            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="myform">
                 <textarea name="entrada" id="entrada" cols="100" rows="5"></textarea><br>
                 <input type="submit" name="insertar" value="Insertar">
+                <input type="submit" name="EliminarEntradas" value="Eliminar mis entradas">
             </form>
+            <?php else: ?>
+            <p>Escribe una entrada</p>
+            <form>
+                <textarea cols="100" rows="5"></textarea><br>
+                <input type="button"  name="login" id="login" onclick="login1()" value="Insertar">
+                <input type="reset" value="Borrar" name="borrar" id="borrar">
+            </form>
+            <?php endif; ?>
+            <center>
+                <h2>Entradas</h2>
+            </center>
             <?php
             include_once "conector.php";
-            $consulta = "SELECT * FROM entrada";
+            $consulta = "SELECT * FROM entrada ORDER BY id_entrada desc";
 
             foreach($base_de_datos->query($consulta) as $fila){
                 $id_entrada=$fila['id_entrada'];
@@ -98,36 +115,43 @@
                 $id_usuario=$fila['id_usuario'];
             
             ?>
-            <center><h2>Entradas</h2></center>
-            <article class="entrada"> 
-                    <h4>
-                        <address>Usuario: <?php echo  $id_entrada; ?>
-                    </h4>
-                    <p>
-                        <address>Fecha: <?php echo  $fecha_entrada; ?>
-                    </p>
-                    <address><?php echo $entradas; ?></address>
-                    <h6>
-                        <address>Ref: <?php echo  $id_entrada; ?>
-                    </h6>
+
+            <article class="entrada">
+                <h4>
+                    <address>Usuario: <?php echo  $id_usuario; ?>
+                </h4>
+                <p>
+                    <address>Fecha: <?php echo  $fecha_entrada; ?>
+                </p>
+                <address><?php echo $entradas; ?></address>
+                <h6>
+                    <address>Ref: <?php echo  $id_entrada; ?>
+                </h6>
             </article>
             <?php
                 }
             ?>
         </section>
-
-
         <section id="ContCom">
-        <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <?php if($email['tipo']=="Admin"|| $email['tipo']=="SuperAdmin" || $email['tipo']=="Verificado"|| $email['tipo']=="Usuario"): ?>
+            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <p>Escribe un comentario</p>
                 <textarea name="comentario" id="comentario" cols="100" rows="5"></textarea><br>
                 <input type="submit" name="Comentar" value="Comentar">
-                <input type="submit" name="Eliminar" value="Eliminar mis comentarios">
+                <input type="submit" name="EliminarComentarios" value="Eliminar mis comentarios">
                 <input type="reset" value="Borrar" name="borrar" id="borrar">
-            </form>    
+            </form>
+            <?php else: ?>
+            <form>
+                <p>Escribe un comentario</p>
+                <textarea cols="100" rows="5"></textarea><br>
+                <input type="button"  name="login" id="login" onclick="login1()" value="Comentar">
+                <input type="reset" value="Borrar" name="borrar" id="borrar">
+            </form>
+            <?php endif; ?>
             <?php
             include_once "conector.php";
-            $consulta = "SELECT * FROM comentario";
+            $consulta = "SELECT * FROM comentario order by id_comentario desc";
 
             foreach($base_de_datos->query($consulta) as $fila){
                 $id_comentario=$fila['id_comentario'];
@@ -136,18 +160,20 @@
                 $id_usuario=$fila['id_usuario'];
             
             ?>
-            <center><h2>Comentarios</h2></center>
+            <center>
+                <h2>Comentarios</h2>
+            </center>
             <article class="comentario">
-                    <h4>
-                        <address>Usuario: <?php echo  $id_usuario; ?>
-                    </h4>
-                    <p>
-                        <address>Fecha: <?php echo  $fecha_comentario; ?>
-                    </p>
-                    <address><?php echo $comentarios; ?></address>
-                    <h6>
-                        <address>Ref: <?php echo  $id_comentario; ?>
-                    </h6>
+                <h4>
+                    <address>Usuario: <?php echo  $id_usuario; ?>
+                </h4>
+                <p>
+                    <address>Fecha: <?php echo  $fecha_comentario; ?>
+                </p>
+                <address><?php echo $comentarios; ?></address>
+                <h6>
+                    <address>Ref: <?php echo  $id_comentario; ?>
+                </h6>
             </article>
             <?php
                 }
@@ -192,6 +218,7 @@
         $resultado = $sentencia->execute(array(':comentarios' => $comentario, ':id_usuario' => $id));*/
         $sentencia = $base_de_datos->prepare("INSERT INTO comentario VALUES (NULL,NUll,?,?);");
         $resultado = $sentencia->execute([$comentario, $id_usuario]);
+        $_POST['comentario'] ="";
         
      }
         elseif(isset($_POST["insertar"])){
@@ -205,15 +232,27 @@
            $resultado = $sentencia->execute(array(':comentarios' => $comentario, ':id_usuario' => $id));*/
            $sentencia = $base_de_datos->prepare("INSERT INTO entrada VALUES (NULL,NUll,?,?);");
            $resultado = $sentencia->execute([$entrada, $id_usuario]);
+           exit;
+           
      
         }
 
      #ELIMINAR MIS COMENTARIOS UNO A UNO EN LA TABLA EN MYSQL
-		elseif(isset($_POST["Eliminar"])){
+		elseif(isset($_POST["EliminarComentarios"])){
             $id_usuario =$email['id_usuario']; 
             $sentencia = $base_de_datos->prepare("DELETE FROM comentario WHERE id_usuario = ? order by id_comentario desc limit 1;");
             $resultado = $sentencia->execute([$id_usuario]);
-            }
+            if ($resultado == true) header("Location: EliminarEntradas.php");
+	        else echo "Algo salió mal al eliminar";
+            exit;
+        }elseif(isset($_POST["EliminarEntradas"])){
+                $id_usuario =$email['id_usuario']; 
+                $sentencia = $base_de_datos->prepare("DELETE FROM entrada WHERE id_usuario = ? order by id_entrada desc limit 1;");
+                $resultado = $sentencia->execute([$id_usuario]);
+                if ($resultado == true) header("Location: EliminarEntradas.php");
+	            else echo "Algo salió mal al eliminar";
+                exit;
+                }
     ?>
 </body>
 

@@ -59,7 +59,7 @@
 			<div>
 				<label for="tipo">Tipo de usuario:</label><br>
 				<select name="tipo" type="text">
-					<option value="usuario" selected>Usuario</option>
+					<option value="Usuario" selected>Usuario</option>
 					<option value="Verificado">Verificado</option>
 					<option value="Admin">Administrador</option>
 				</select>
