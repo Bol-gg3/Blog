@@ -63,18 +63,27 @@
             <?php endif; ?>
         </header>
         <section id="ContEnt">
+        <p>Escribe una entrada</p>
+            <!--Mensaje de error -->
+			<?php if(!empty($errores)): ?>
+			<div>
+				<ul>
+					<?php echo $errores; ?>
+				</ul>
+			</div>
+			<?php endif; ?>
             <?php if($email['tipo']=="Admin"|| $email['tipo']=="SuperAdmin" || $email['tipo']=="Verificado"|| $email['tipo']=="Usuario"): ?>
-            <p>Escribe una entrada</p>
+            
             <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="myform">
                 <textarea name="entrada" id="entrada" cols="100" rows="5"></textarea><br>
                 <input type="submit" name="insertar" value="Insertar">
-                <input type="submit" name="EliminarEntradas" value="Eliminar mis entradas">
+                <input type="reset" value="Borrar" name="borrar" id="borrar">
             </form>
             <?php else: ?>
             <p>Escribe una entrada</p>
             <form>
                 <textarea cols="100" rows="5"></textarea><br>
-                <input type="button"  name="login" id="login" onclick="login1()" value="Insertar">
+                <input type="button" name="login" id="login" onclick="login1()" value="Insertar">
                 <input type="reset" value="Borrar" name="borrar" id="borrar">
             </form>
             <?php endif; ?>
@@ -89,74 +98,98 @@
                 $id_entrada=$fila['id_entrada'];
                 $fecha_entrada=$fila['fecha_entrada'];
                 $entradas=$fila['entradas'];
-                $id_usuario=$fila['id_usuario'];
+                $id_usuarioE=$fila['id_usuario'];
+                $nombre=$fila['nombre'];
             
             ?>
 
             <article class="entrada">
-                <h4>
-                    <address>Usuario: <?php echo  $id_usuario; ?>
-                </h4>
+                <?php if($email['id_usuario']==$id_usuarioE): ?>
+                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="myform">
+                    <input type="hidden" name="RecogeIdEntrada" value="<?php echo $id_entrada; ?>">
+                    <input type="submit" name="EliminarEntrada" value="Eliminar entrada">
+                </form>
+                <?php endif; ?>
                 <p>
                     <address>Fecha: <?php echo  $fecha_entrada; ?>
                 </p>
+                <h4>
+                    <address>Usuario: <?php echo  $nombre; ?>
+                </h4>
+
                 <address><?php echo $entradas; ?></address>
                 <h6>
                     <address>Ref: <?php echo  $id_entrada; ?>
                 </h6>
-            </article>
-            <?php
-                }
-            ?>
-        </section>
-        <section id="ContCom">
-            <?php if($email['tipo']=="Admin"|| $email['tipo']=="SuperAdmin" || $email['tipo']=="Verificado"|| $email['tipo']=="Usuario"): ?>
-            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <p>Escribe un comentario</p>
-                <textarea name="comentario" id="comentario" cols="100" rows="5"></textarea><br>
-                <input type="submit" name="Comentar" value="Comentar">
-                <input type="submit" name="EliminarComentarios" value="Eliminar mis comentarios">
-                <input type="reset" value="Borrar" name="borrar" id="borrar">
-            </form>
-            <?php else: ?>
-            <form>
-                <p>Escribe un comentario</p>
-                <textarea cols="100" rows="5"></textarea><br>
-                <input type="button"  name="login" id="login" onclick="login1()" value="Comentar">
-                <input type="reset" value="Borrar" name="borrar" id="borrar">
-            </form>
-            <?php endif; ?>
-            <?php
-            include_once "conector.php";
-            $consulta = "SELECT * FROM comentario order by id_comentario desc";
+                <!--Mensaje de error -->
+                    <?php if(!empty($errores)): ?>
+                    <div>
+                        <ul>
+                            <?php echo $errores; ?>
+                        </ul>
+                    </div>
+                    <?php endif; ?>
+                <?php if($email['tipo']=="Admin"|| $email['tipo']=="SuperAdmin" || $email['tipo']=="Verificado"|| $email['tipo']=="Usuario"): ?>
+                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <textarea name="comentario" id="comentario" cols="100" rows="5"></textarea><br>
+                    <input type="hidden" name="RecogeIdEntrada" value="<?php echo $id_entrada; ?>">
+                    <input type="submit" name="Comentar" value="Comentar">
+                    <input type="reset" value="Borrar" name="borrar" id="borrar">
+                </form>
+                <?php else: ?>
+                <p>Escribe una entrada</p>
+                <form>
+                    <textarea cols="100" rows="5"></textarea><br>
+                    <input type="button" name="login" id="login" onclick="login1()" value="Comentar">
+                    <input type="reset" value="Borrar" name="borrar" id="borrar">
+                </form>
+                <?php endif; ?>
+                <center>
+                    <h2>Comentarios</h2>
+                </center>
+                <?php
+                    include_once "conector.php";
+                    $consulta = "SELECT * FROM comentario order by id_comentario desc";
 
-            foreach($base_de_datos->query($consulta) as $fila){
-                $id_comentario=$fila['id_comentario'];
-                $fecha_comentario=$fila['fecha_comentario'];
-                $comentarios=$fila['comentarios'];
-                $id_usuario=$fila['id_usuario'];
+                    foreach($base_de_datos->query($consulta) as $fila){
+                    $id_comentario=$fila['id_comentario'];
+                    $fecha_comentario=$fila['fecha_comentario'];
+                    $comentarios=$fila['comentarios'];
+                    $id_usuarioC=$fila['id_usuario'];
+                    $nombre=$fila['nombre'];
+                    $id_entradaE=$fila['id_entrada'];
             
+                ?>
+                <?php if($id_entrada==$id_entradaE): ?>
+                <article class="comentario">
+                    <p>
+                        <address>Fecha: <?php echo  $fecha_comentario; ?>
+                    </p>
+                    <h4>
+                        <address>Usuario: <?php echo  $nombre; ?>
+                    </h4>
+
+                    <address><?php echo $comentarios; ?></address>
+                    <h6>
+                        <address>Ref: <?php echo  $id_comentario; ?>
+                    </h6>
+                    <?php if($email['id_usuario']==$id_usuarioC): ?>
+                    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" name="myform3">
+                        <input type="hidden" name="RecogeIdComentario" value="<?php echo $id_comentario; ?>">
+                        <input type="submit" name="EliminarComentario" value="Eliminar comentario">
+                    </form>
+                    <?php endif; ?>
+                </article>
+                <?php endif; ?>
+                <?php
+                }
             ?>
-            <center>
-                <h2>Comentarios</h2>
-            </center>
-            <article class="comentario">
-                <h4>
-                    <address>Usuario: <?php echo  $id_usuario; ?>
-                </h4>
-                <p>
-                    <address>Fecha: <?php echo  $fecha_comentario; ?>
-                </p>
-                <address><?php echo $comentarios; ?></address>
-                <h6>
-                    <address>Ref: <?php echo  $id_comentario; ?>
-                </h6>
             </article>
             <?php
                 }
             ?>
         </section>
-
         <section id="btnaburro">
 
             <button id="btnmodo"><img src="../Recursos/lunita.png" id="btnnoche"></button>
@@ -295,5 +328,4 @@
 
     }
 </script>
-
 </html>

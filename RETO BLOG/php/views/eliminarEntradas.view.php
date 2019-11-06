@@ -18,7 +18,6 @@ $entrada = $sentencia->fetchAll(PDO::FETCH_OBJ);
 	</style>
 </head>
 <script>
-
 	function salir() {
 		window.location = "reto.php";
 	}
@@ -26,12 +25,16 @@ $entrada = $sentencia->fetchAll(PDO::FETCH_OBJ);
 	function cerrar() {
 		window.location = "cerrar.php";
 	}
+	function atras() {
+		window.location = "GestionUsuariosAdmin.php";
+	}
 </script>
 <body>
 <center>
 	<div>
 		<h1 class="titulo">Administración de Entradas</h1>
 		<br>
+		<button type="button" onclick="atras()">Volver</button>
 		<button type="button" onclick="salir()">Inicio</button>
 		<input type="button" value="Cerrar Session" name="cerrarse" id="cerrarse" onclick="cerrar()">
 		<br><br><br><br>
@@ -65,6 +68,7 @@ $entrada = $sentencia->fetchAll(PDO::FETCH_OBJ);
 					<th>Fecha</th>
 					<th>Entrada</th>
 					<th>ID Usuario</th>
+					<th>Nombre Usuario</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -78,6 +82,7 @@ $entrada = $sentencia->fetchAll(PDO::FETCH_OBJ);
 					<td><?php echo $entrada->fecha_entrada?></td>
 					<td><?php echo $entrada->entradas?></td>
 					<td><?php echo $entrada->id_usuario?></td>
+					<td><?php echo $entrada->nombre?></td>
 				</tr>
 				<?php } ?>
 			</tbody>

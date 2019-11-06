@@ -6,14 +6,8 @@
 	<title>Iniciar Sesion</title>
 </head>
 <script language="JavaScript" type="text/javascript">
-
 	function closeSelf() {
-		alert(window.opener.location.href)
-
-		window.opener.location.reload(true);
-		self.close();
-		return true;
-		
+		window.close();
 	}
 
 	function validacion(){	
@@ -36,7 +30,7 @@ window.onunload = function(){
 	<div>
 		<h1 class="titulo">Iniciar Sesion</h1>
 
-		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="formulario"
+		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="formulario"
 			name="formu" >
 			<div>
 				<input type="email" name="email" id="email" class="email" placeholder="Email">
@@ -45,7 +39,7 @@ window.onunload = function(){
 			<div>
 				<input type="password" name="password" class="password_btn" placeholder="Contraseña">
 				<br><br>
-				<input type="submit" id="iniciar" value="Iniciar Sesión" >
+				<input type="submit" id="iniciar" name="iniciar" value="Iniciar Sesión" >
 				<input type="button" id="cancelar" name="cancelar" value="Cancelar" onClick="closeSelf()">
 				<input type="reset" name="limpiar" value="Limpiar">	
 						

@@ -10,6 +10,7 @@ if (isset($_SESSION['email'])) {
 $errores = '';
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	if(isset($_POST["iniciar"])){
 	$email = filter_var(strtolower($_POST['email']), FILTER_SANITIZE_STRING);
 	$password = $_POST['password'];
 
@@ -21,15 +22,19 @@ $errores = '';
 	$resultado = $sentencia->fetch();
 	if ($resultado !== false) {
 		$_SESSION['email'] = $email;
-		echo "<script>alert(window.opener.location.href)
-
-		window.opener.location.reload(true);
-		self.close();
-		return true;</script>";
-		header('Location: index.php');
+		?>
+			<script language="JavaScript" type="text/javascript">
+				function closeSelf() {
+					window.close();
+				}
+				closeSelf();
+			</script>
+	<?php
 	} else {
 		$errores .= '<li>Datos Incorrectos</li>';
+		}
 	}
+
 }
 
 

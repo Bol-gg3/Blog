@@ -26,12 +26,16 @@ $comentario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 	function cerrar() {
 		window.location = "cerrar.php";
 	}
+	function atras() {
+		window.location = "GestionUsuariosAdmin.php";
+	}
 </script>
 <body>
 <center>
 	<div>
 		<h1 class="titulo">Administración de Comentario</h1>
 		<br>
+		<button type="button" onclick="atras()">Volver</button>
 		<button type="button" onclick="salir()">Inicio</button>
 		<input type="button" value="Cerrar Session" name="cerrarse" id="cerrarse" onclick="cerrar()">
 		<br><br><br><br>
@@ -65,6 +69,7 @@ $comentario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 					<th>Fecha</th>
 					<th>Comentario</th>
 					<th>ID Usuario</th>
+					<th>Nombre Usuario</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -78,6 +83,7 @@ $comentario = $sentencia->fetchAll(PDO::FETCH_OBJ);
 					<td><?php echo $comentario->fecha_comentario?></td>
 					<td><?php echo $comentario->comentarios?></td>
 					<td><?php echo $comentario->id_usuario?></td>
+					<td><?php echo $comentario->nombre?></td>
 				</tr>
 				<?php } ?>
 			</tbody>

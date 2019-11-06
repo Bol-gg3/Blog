@@ -21,24 +21,15 @@
 	<title>G3>Config</title>
 </head>
 <script>
-	function modificarNombre() {
-		window.location = "modifNombre.php";
-	}
-
-	function modificarEmail() {
-		window.location = "modifEmail.php";
-	}
-
-	function modificarContraseña() {
-		window.location = "modifPassword.php";
-	}
-
 	function salir() {
 		window.location = "reto.php";
 	}
 
 	function cerrar() {
 		window.location = "cerrar.php";
+	}
+	function atras() {
+		window.location = "GestionUsuariosAdmin.php";
 	}
 </script>
 
@@ -70,6 +61,7 @@
 				
 		</form>
 		<br><br>
+		<button type="button" onclick="atras()">Volver</button>
 		<button type="button" onclick="salir()">Inicio</button>
 		<input type="button" value="Cerrar Session" name="cerrarse" id="cerrarse" onclick="cerrar()">
 		<br>

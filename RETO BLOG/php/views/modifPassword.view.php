@@ -13,6 +13,9 @@
 	function cerrar() {
 		window.location = "../cerrar.php";
 	}
+	function atras() {
+		window.location = "configCuenta.php";
+	}
 </script>
 
 <body>
@@ -34,6 +37,7 @@
 				<button type="button" onclick="login.submit()">Modificar</button>
 			</div>
 			<br><br>
+			<button type="button" onclick="atras()">Volver</button>
 			<button type="button" onclick="salir()">Inicio</button>
 			<input type="button" value="Cerrar Session" name="cerrarse" id="cerrarse" onclick="cerrar()">
 

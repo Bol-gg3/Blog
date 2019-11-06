@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="botonV"><a href="../../php/aburro.php"><h2>Volver</h2></a></div>
+    <div id="formulario">
+        <label>Nombre   <input type="text" id="Inombre" value="Raul"></label><br>
+        <label>Apellido <input type="text" id="Iapellido" value="Perez"></label><br>
+        <label>Telefono <input type="text" id="Itelefono" value="111111111"></label><br>
+        <label>Email    <input type="text" id="Iemail" value="RP@gmail.com"></label><br>
+        
+        <h3>bordes</h3><br>
+        <input type="radio" name="color"  value="rojo" id="rojo"> rojo
+        <input type="radio" name="color" value="verde" id="verde"> Verde
+        <input type="radio" name="color" value="azul" id="azul"> Azul <br>
+
+        <h3>fondo</h3><br>
+
+        <input type="radio" name="fondo"  value="rojo" id="fondo1"><img class="fondo"  src="fondo1.jpg" alt="">
+        <input type="radio" name="fondo"  value="rojo" id="fondo2"><img class="fondo"  src="fondo2.jpg" alt="">
+        <input type="radio" name="fondo"  value="rojo" id="fondo3"><img class="fondo"  src="fondo3.jpg" alt=""> <br>
+
+        <button id="Ejecutar">Listo</button>
+    </div>
+
+    <div id="contenedor">
+        <article id="nombre"></article>
+        <article id="apellido"></article>
+        <article id="telefono"></article>
+        <article id="email"></article>
+    </div>
+
+    <script>
+    document.getElementById("Ejecutar").onclick=Ejecutar;
+    document.getElementById("Inombre").onblur=comprobarNombre;
+    document.getElementById("Iapellido").onblur=comprobarApellido;
+    document.getElementById("Itelefono").onblur=comprobarTelefono;
+    document.getElementById("Iemail").onblur=comprobarEmail;
+
+    function Ejecutar() {
+        
+        var persona = { nombre : document.getElementById("Inombre").value,
+                        apellido : document.getElementById("Iapellido").value,
+                        telefono : document.getElementById("Itelefono").value,
+                        email : document.getElementById("Iemail").value
+                        }
+        
+        document.getElementById("contenedor").style.display="grid";
+        document.getElementById("nombre").innerHTML = "Nombre : "+ persona.nombre;
+        document.getElementById("apellido").innerHTML = "Apellido : "+ persona.apellido;
+        document.getElementById("telefono").innerHTML = "Tel : "+persona.telefono;
+        document.getElementById("email").innerHTML = "Email : "+persona.email;
+
+        if(document.getElementById("rojo").checked){document.getElementById("contenedor").style.borderColor="red"}
+        else if (document.getElementById("verde").checked){document.getElementById("contenedor").style.borderColor="green"}
+        else if (document.getElementById("azul").checked){document.getElementById("contenedor").style.borderColor="blue"} 
+
+    
+        if (document.getElementById("fondo1").checked){document.getElementById("contenedor").style.backgroundImage="url('fondo1.jpg')"}
+        else if(document.getElementById("fondo2").checked){document.getElementById("contenedor").style.backgroundImage="url('fondo2.jpg')"}
+        else if (document.getElementById("fondo3").checked){document.getElementById("contenedor").style.backgroundImage="url('fondo3.jpg')"}
+        else {document.getElementById("contenedor").style.backgroundImage="url('fondo1.jpg')"}
+    }
+    
+function comprobarNombre() {
+       var Cnombre = document.getElementById("Inombre").value
+       var res = Cnombre.split("");
+        for(i=0;i<res.length; i++){
+            if (
+            res[i]==="0"||
+            res[i]==="1"||
+            res[i]==="2"||
+            res[i]==="3"||
+            res[i]==="4"||
+            res[i]==="5"||
+            res[i]==="6"||
+            res[i]==="7"||
+            res[i]==="8"||
+            res[i]==="9"){
+                            document.getElementById("Inombre").style.backgroundColor="#E28484";
+                            document.getElementById("Inombre").style.color="red"
+                            document.getElementById("Inombre").innerHTML+="*";}
+    
+    else{                   document.getElementById("Inombre").style.backgroundColor="#8DE284";
+                            document.getElementById("Inombre").style.color="black"
+                            document.getElementById("Inombre").innerHTML+="*";}
+        }
+    }
+
+    function comprobarApellido() {
+       var Capellido = document.getElementById("Iapellido").value
+       var res = Capellido.split("");
+        for(i=0;i<res.length; i++){
+            if (
+            res[i]==="0"||
+            res[i]==="1"||
+            res[i]==="2"||
+            res[i]==="3"||
+            res[i]==="4"||
+            res[i]==="5"||
+            res[i]==="6"||
+            res[i]==="7"||
+            res[i]==="8"||
+            res[i]==="9"){
+                            document.getElementById("Iapellido").style.backgroundColor="#E28484";
+                            document.getElementById("Iapellido").style.color="red"
+                            document.getElementById("Iapellido").innerHTML+="*";}
+    
+    else{                   document.getElementById("Iapellido").style.backgroundColor="#8DE284";
+                            document.getElementById("Iapellido").style.color="black"
+                            document.getElementById("Iapellido").innerHTML+="*";}
+        }
+    }
+
+function comprobarTelefono() {
+       var Ctelefono = document.getElementById("Itelefono").value
+       var res = Ctelefono.split("");
+
+       console.log(res)
+        for(i=0;i<res.length; i++){
+            if (
+            res[i]  === "0"||
+            res[i]  === "1"||
+            res[i]  === "2"||
+            res[i]  === "3"||
+            res[i]  === "4"||
+            res[i]  === "5"||
+            res[i]  === "6"||
+            res[i]  === "7"||
+            res[i]  === "8"||
+            res[i]  === "9")  {
+                            
+
+                            document.getElementById("Itelefono").style.backgroundColor="#8DE284";
+                            document.getElementById("Itelefono").style.color="black"
+                            document.getElementById("Itelefono").innerHTML+="*";
+                            }
+    
+    else{    
+                            document.getElementById("Itelefono").style.backgroundColor="#E28484";
+                            document.getElementById("Itelefono").style.color="red"
+                            document.getElementById("Itelefono").innerHTML+="*";               
+        }
+    }}
+
+function comprobarEmail() {
+
+    var Ccorreo = document.getElementById("Iemail").value
+    res = Ccorreo.split("")
+    console.log(res)
+
+    for(i=0; i<res.length; i++){
+        if(res.includes("@")&&res.includes(".") && res[0]!=="@"   &&  res[res.length]!==".")
+            { 
+                
+                            document.getElementById("Iemail").style.backgroundColor="#8DE284";
+                            document.getElementById("Iemail").style.color="black"
+                            document.getElementById("Iemail").innerHTML+="*";}
+
+        else{               document.getElementById("Iemail").style.backgroundColor="#E28484";
+                            document.getElementById("Iemail").style.color="red"
+                            document.getElementById("Iemail").innerHTML+="*"; }
+            }
+    
+}
+    </script>
+</body>
+</html>

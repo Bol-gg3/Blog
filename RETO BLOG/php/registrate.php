@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 	if ($errores == '') {
 		
-			$tipo = "usuario";
+			$tipo = "Usuario";
 			
 		$sentencia = $base_de_datos->prepare('INSERT INTO usuario (id_usuario, nombre, password,email,tipo) VALUES (null, :nombre, :password, :email, :tipo)');
 		$resultado = $sentencia->execute(array(':nombre' => $nombre, ':password' => $password, ':email' => $email, ':tipo' => $tipo));
